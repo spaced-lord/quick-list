@@ -11,6 +11,6 @@ export const Dropdown = ({ onChange, children }) => {
   );
 };
 
-export const DropdownOptions = ({ onChange, value }) => {
+export const DropdownOptions = ({ value }) => {
   return <option value={value}>{value}</option>;
 };
