@@ -5,58 +5,77 @@ import API from "../utils/API";
 
 //Create page component
 const NewRecipe = () => {
-  //Set state (Placeholder for test...Need name change)
-  const [state, setState] = useState({
-    stuff: "",
-  });
+  //State for page components
+  const [componentState, setComponentState] = useState({});
 
-  const clickFunction = () => {
-    API.recipeList()
-      .then((res) => console.log(res.data))
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
+  //State for ingredient selections
+  const [selection, setSelection] = useState({});
+
+  //
+  const submitFunction = (event) => {
+    event.preventDefault();
+    if (selection.name) {
+      API.newIngredient({ type: selection.type, name: selection.name })
+        .then((res) => console.log("Added"))
+        .catch((err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      setComponentState({});
+    }
   };
 
-  //Dropdown change function. (Might need to change...Need to determine how to use state)
-  const handleSelectChange = (event) => {
-    //Variable for selected option
-    const selection = event.target.value;
-    //Switch based on selected option
-    switch (selection) {
-      case "Grain":
-        setState({
-          stuff: (
-            <Dropdown onChange={handleSelectChange}>
-              {test.map((item, index) => (
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case "type":
+        setSelection((previousState) => ({ ...previousState, [name]: value }));
+        setComponentState({
+          secondDropdown: (
+            <Dropdown
+              name="selected"
+              onChange={handleInputChange}
+              defaultText="Ingredient"
+              id="second"
+            >
+              {test2.map((item, index) => (
                 <DropdownOptions value={item} key={index} />
               ))}
             </Dropdown>
           ),
         });
         break;
+      case "selected":
+        setComponentState((previousState) => ({
+          ...previousState,
+          input: <input name="name" onChange={handleInputChange}></input>,
+        }));
+        break;
+      case "name":
+        setSelection((previousState) => ({ ...previousState, [name]: value }));
+        break;
       default:
-        setState({ stuff: "" });
         break;
     }
   };
 
   //Test variable will be deleted.
   const test = ["Grain", "Vegetable", "Meat", "Dairy", "Fruit", "Other"];
+  const test2 = ["Create New", "morr"];
 
   //Return for the page
   return (
-    <div>
-      <Dropdown onChange={handleSelectChange}>
+    <form onSubmit={submitFunction}>
+      <Dropdown name="type" onChange={handleInputChange} defaultText="Type">
         {test.map((item, index) => (
           <DropdownOptions value={item} key={index} />
         ))}
       </Dropdown>
-      {state.stuff}
-      <button onClick={clickFunction}>submit</button>
-    </div>
+      {componentState.secondDropdown}
+      {componentState.input}
+      <button type="submit">submit</button>
+    </form>
   );
 };
 
