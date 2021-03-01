@@ -1,6 +1,7 @@
 //Import React, useState, and necessary components.
 import React, { useState } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
+import API from "../utils/API";
 
 //Create page component
 const NewRecipe = () => {
@@ -8,6 +9,16 @@ const NewRecipe = () => {
   const [state, setState] = useState({
     stuff: "",
   });
+
+  const clickFunction = () => {
+    API.recipeList()
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+  };
 
   //Dropdown change function. (Might need to change...Need to determine how to use state)
   const handleSelectChange = (event) => {
@@ -44,6 +55,7 @@ const NewRecipe = () => {
         ))}
       </Dropdown>
       {state.stuff}
+      <button onClick={clickFunction}>submit</button>
     </div>
   );
 };
