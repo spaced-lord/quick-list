@@ -11,6 +11,10 @@ export default {
     return axios.post("/api/ingredient/new", ingredient);
   },
   //Post route for recipe
+  newRecipe: function (recipe) {
+    console.log(recipe);
+    return axios.post("/api/recipes/new", recipe);
+  },
   //Delete for grocery list
   //Post for user login?
 };

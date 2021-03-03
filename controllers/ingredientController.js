@@ -5,7 +5,6 @@ module.exports = {
     console.log(req.body);
     db.Ingredient.create(req.body)
       .then((data) => {
-        console.log(data);
         res.json(data);
       })
       .catch((err) => {
