@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import NavTabs from "./components/Nav/Nav";
 import NewRecipe from "./pages/NewRecipe";
@@ -8,13 +9,26 @@ import GroceryList from "./pages/GroceryList";
 import SavedRecipes from "./pages/SavedRecipes";
 import "tailwindcss/tailwind.css";
 
+// function App() {
+//   return (
+//     <div className="App">
+//       {/* <NewRecipe /> */}
+//       <HomePage />
+//       <Signup />
+//     </div>
+//   );
+// }
+
 function App() {
   return (
-    <div className="App">
-      {/* <NewRecipe /> */}
-      <HomePage />
-      <Signup />
-    </div>
+    <Router>
+      <div>
+        <NavTabs />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route path="/NewRecipe" component={NewRecipe} />
+      </div>
+    </Router>
   );
 }
 
