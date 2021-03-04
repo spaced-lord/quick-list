@@ -1,5 +1,5 @@
 //Import React, useState, and necessary components.
-import React, { useState } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import InputBar from "../components/Input/Input";
 import API from "../utils/API";
@@ -16,7 +16,37 @@ const NewRecipe = () => {
   const [pageState, setPageState] = useState({});
 
   //Ingredients array
-  const [ingredientsArray, setIngredientsArray] = useState([]);
+  const [ingredientsArray, setIngredientsArray] = useReducer((state, item) => {
+    if (item.length) {
+      state.push(item);
+    } else {
+      state = [];
+    }
+    console.log(state);
+    return state;
+  }, []);
+
+  //State for first dropdown array
+  const [typeSelectArray, setTypeSelectArray] = useState([]);
+
+  //State for second dropdown array
+  const [ingredSelectArray, dispatch] = useReducer((state, action) => {
+    state = [];
+    action[0].ingredientMatch.map((item) => {
+      return state.push(item.name);
+    });
+    state.unshift("Create New");
+    return state;
+  }, []);
+
+  useEffect(() => {
+    API.ingredientTypeList()
+      .then((res) => {
+        const tempSelectArray = res.data.map((type) => type.type);
+        setTypeSelectArray(tempSelectArray);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   //Function for button clicks
   const submitFunction = (event) => {
@@ -28,10 +58,7 @@ const NewRecipe = () => {
     switch (name) {
       case "addIngredient":
         //Adds to ingredients array used for completed recipe
-        setIngredientsArray((previousState) => [
-          ...previousState,
-          pageState.ingredientName,
-        ]);
+        setIngredientsArray(pageState.ingredientName);
         //Pushes new ingredient to database
         API.newIngredient({
           type: ingredient.type,
@@ -49,10 +76,7 @@ const NewRecipe = () => {
 
       case "completeRecipe":
         ////To slow to work(Ask question)
-        // setIngredientsArray((previousState) => [
-        //   ...previousState,
-        //   ingredient.ingredientName,
-        // ]);
+        setIngredientsArray(pageState.ingredientName);
         //Post new recipe to database
         API.newRecipe({
           name: recipeState.name,
@@ -67,6 +91,7 @@ const NewRecipe = () => {
         //Reset states of recipe and ingredient
         setIngredient({});
         setRecipeState({});
+        setIngredientsArray([]);
         break;
       case "recipeName":
         //Sets the recipe name with the state changed by the input
@@ -81,10 +106,16 @@ const NewRecipe = () => {
   const handleSelectChange = (event) => {
     //Deconstructs event.target object
     const { name, value } = event.target;
-    //Sets the ingredient type from the dropdown
+    //Switch case for dropdown
     switch (name) {
       case "type":
         setIngredient({ [name]: value });
+        API.ingredientMatchList({ [name]: value }).then((res) => {
+          const selectIngredientArray = res.data.filter(
+            (item) => item.type === value
+          );
+          dispatch(selectIngredientArray);
+        });
         break;
       case "ingredientName":
         if (value === "Create New") {
@@ -97,7 +128,6 @@ const NewRecipe = () => {
       default:
         break;
     }
-    //Set a placeholder for input to appear.  There is a bug here if you erase from the input.
   };
 
   //Function to handle input changes
@@ -110,6 +140,7 @@ const NewRecipe = () => {
       case "recipeName":
         //Sets a temporary state to be transferred on submit
         setPageState({ recipeName: value });
+
         break;
       case "ingredientName":
         setPageState({ ...pageState, [name]: value });
@@ -120,9 +151,9 @@ const NewRecipe = () => {
   };
 
   //Test variable will be deleted.
-  const test = ["Grain", "Vegetable", "Meat", "Dairy", "Fruit", "Other"];
-  const test2 = ["Create New", "More"];
-  const test3 = ["Something", "More"];
+  // const test = ["Grain", "Vegetable", "Meat", "Dairy", "Fruit", "Other"];
+  // const test2 = ["Create New", "More"];
+  // const test3 = ["Something", "More"];
 
   //Return for the page
   return (
@@ -135,7 +166,7 @@ const NewRecipe = () => {
             onChange={handleSelectChange}
             defaultText="Type"
           >
-            {test.map((item, index) => (
+            {typeSelectArray.map((item, index) => (
               <DropdownOptions value={item} key={index} />
             ))}
           </Dropdown>
@@ -150,7 +181,7 @@ const NewRecipe = () => {
             onChange={handleSelectChange}
             defaultText="Ingredient"
           >
-            {test2.map((item, index) => (
+            {ingredSelectArray.map((item, index) => (
               <DropdownOptions value={item} key={index} />
             ))}
           </Dropdown>
@@ -176,8 +207,6 @@ const NewRecipe = () => {
           </button>
         </div>
       )}
-      {console.log(recipeState)}
-      {console.log(ingredientsArray)}
       {console.log(pageState)}
     </form>
   );

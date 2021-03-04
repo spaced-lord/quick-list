@@ -14,10 +14,6 @@ const ingredientSeedData = [
   },
   {
     type: "Vegetable",
-    name: "Tomato",
-  },
-  {
-    type: "Vegetable",
     name: "Green Pepper",
   },
   {
