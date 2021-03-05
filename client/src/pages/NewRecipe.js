@@ -2,7 +2,9 @@
 import React, { useState, useEffect, useReducer } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import InputBar from "../components/Input/Input";
+import Button from "../components/Button/Button";
 import API from "../utils/API";
+import history from "../utils/history";
 
 //Create page component
 const NewRecipe = () => {
@@ -50,33 +52,36 @@ const NewRecipe = () => {
     switch (name) {
       case "addIngredient":
         //Adds to ingredients array used for completed recipe
-        setIngredientsArray((previousState) => [
-          ...previousState,
-          ingredient.ingredientName,
-        ]);
+        if (ingredient.ingredientName) {
+          setIngredientsArray((previousState) => [
+            ...previousState,
+            ingredient.ingredientName,
+          ]);
+        }
         //Pushes new ingredient to database
-        API.newIngredient({
-          type: ingredient.type,
-          name: ingredient.ingredientName,
-        })
-          .then((res) => {})
-          .catch((err) => {
-            if (err) {
-              console.log(err);
-            }
-          });
+        if (ingredient.new) {
+          API.newIngredient({
+            type: ingredient.type,
+            name: ingredient.ingredientName,
+          })
+            .then((res) => {})
+            .catch((err) => {
+              if (err) {
+                console.log(err);
+              }
+            });
+        }
         //Reset PageState object
         setIngredient({});
         setPageState({});
         setDropdownState({ first: "default", second: "default" });
         break;
-      case "completeRecipe":
+      case "addNewRecipe":
         ////To slow to work(Ask question)
         setIngredientsArray((previousState) => [
           ...previousState,
           ingredient.ingredientName,
         ]);
-
         //Post new recipe to database
         API.newRecipe({
           name: recipeState.name,
@@ -104,9 +109,39 @@ const NewRecipe = () => {
           })
           .catch((err) => console.log(err));
         break;
+      case "completeToGroceryList":
+        ////To slow to work(Ask question)
+        setIngredientsArray((previousState) => [
+          ...previousState,
+          ingredient.ingredientName,
+        ]);
+        //Post new recipe to database
+        API.newRecipe({
+          name: recipeState.name,
+          ingredients: ingredientsArray,
+        })
+          .then((res) => {})
+          .catch((err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+        //Reset states of recipe and ingredient
+        setPageState({});
+        setRecipeState({});
+        setIngredientsArray([]);
+        setIngredient({});
+
+        history.push("/GroceryList");
+        refreshPage();
+        break;
       default:
         break;
     }
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   //Function to handle dropdown changes
@@ -151,7 +186,7 @@ const NewRecipe = () => {
         setPageState({ recipeName: value });
         break;
       case "ingredientName":
-        setIngredient({ ...ingredient, [name]: value });
+        setIngredient({ ...ingredient, [name]: value, new: true });
         break;
       default:
         break;
@@ -196,26 +231,51 @@ const NewRecipe = () => {
         {pageState.ingredientName === "Placeholder" && (
           <InputBar name="ingredientName" onChange={handleInputChange} />
         )}
+        {console.log(
+          ingredientsArray.length < 1 || Object.keys(ingredient).length > 0
+        )}
+        {/* {console.log(Object.keys(ingredient).length === 0)}
+        {console.log(ingredientsArray.length < 1)} */}
         {recipeState.name ? (
           <div>
-            <button name="addIngredient" onClick={submitFunction}>
-              Add Ingredient
-            </button>
-            <button name="completeRecipe" onClick={submitFunction}>
-              Complete Recipe
-            </button>
+            <Button
+              name="addIngredient"
+              onClick={submitFunction}
+              text="Add Ingredient"
+            />
+            <Button
+              name="addNewRecipe"
+              onClick={submitFunction}
+              text="Add New Recipe"
+              disabled={
+                ingredientsArray.length < 1 ||
+                Object.keys(ingredient).length > 0
+              }
+            />
+            <Button
+              name="completeToGroceryList"
+              onClick={submitFunction}
+              text="Save & Add To List"
+              disabled={
+                ingredientsArray.length < 1 ||
+                Object.keys(ingredient).length > 0
+              }
+            />
           </div>
         ) : (
           <div>
-            <button name="recipeName" onClick={submitFunction}>
-              Add Ingredients
-            </button>
+            <Button
+              name="recipeName"
+              onClick={submitFunction}
+              text="Submit Recipe Name"
+            />
           </div>
         )}
       </form>
       {ingredientsArray.map((item, index) => (
         <p key={index}>{item}</p>
       ))}
+      {console.log(ingredient)}
     </div>
   );
 };
