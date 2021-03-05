@@ -4,6 +4,7 @@ const ingredientTypeController = require("../../controllers/ingredientTypeContro
 
 //Route to required method of controller
 router.route("/all").get(ingredientTypeController.getAll);
+router.route("/match").post(ingredientTypeController.matchIngredient);
 
 //Export router
 module.exports = router;
