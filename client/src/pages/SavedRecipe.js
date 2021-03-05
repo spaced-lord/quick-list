@@ -15,7 +15,6 @@ const SavedRecipe = () => {
         const recipeNames = res.data.map((recipe) => {
           return recipe.name;
         });
-        console.log(recipeNames);
         setRecipeList(res.data);
       })
       .catch((err) => console.log(err));
@@ -23,7 +22,11 @@ const SavedRecipe = () => {
 
   const handleRecipeClick = (event) => {
     const recipeID = event.target.getAttribute("value");
-    console.log(recipeID);
+    API.getRecipe(recipeID)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

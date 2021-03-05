@@ -180,9 +180,7 @@ const RecipeSeedData = [
       "Syrup",
     ],
     favorite: false,
-    _id: "6042666f64f41b17e8b567b5",
     name: "Pancakes",
-    __v: 0,
   },
   {
     ingredients: [
@@ -202,9 +200,7 @@ const RecipeSeedData = [
       "Salt",
     ],
     favorite: false,
-    _id: "6042686a64f41b17e8b567c1",
     name: "Creamy Shrimp Pasta",
-    __v: 0,
   },
   {
     ingredients: [
@@ -218,9 +214,7 @@ const RecipeSeedData = [
       "Parsley",
     ],
     favorite: false,
-    _id: "6042690f64f41b17e8b567c7",
     name: "Garlic Salmon",
-    __v: 0,
   },
 ];
 

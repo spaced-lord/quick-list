@@ -4,6 +4,7 @@ const recipeController = require("../../controllers/recipeController");
 
 //Route to required method of controller
 router.route("/all").get(recipeController.getAll);
+router.route("/:id").get(recipeController.findOne);
 router.route("/new").post(recipeController.createNew);
 
 //Export router

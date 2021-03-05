@@ -16,8 +16,8 @@ export default {
     return axios.get("/api/recipes/all");
   },
   //Get route for specific recipe
-  getRecipe: function (recipe) {
-    console.log(recipe);
+  getRecipe: function (recipeID) {
+    return axios.get("/api/recipes/" + recipeID);
   },
   //Post route for recipe
   newRecipe: function (recipe) {
