@@ -1,5 +1,5 @@
 //Import React, useState, and necessary components.
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useReducer } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";

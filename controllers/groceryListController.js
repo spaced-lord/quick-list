@@ -10,4 +10,9 @@ module.exports = {
       .then((data) => res.json(data))
       .catch((err) => console.log(err));
   },
+  getGroceryList: function (req, res) {
+    db.GroceryList.find()
+      .then((data) => res.json(data))
+      .catch((err) => console.log(err));
+  },
 };

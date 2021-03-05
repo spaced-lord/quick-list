@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { List, ListItem } from "../components/List/List";
+import API from "../utils/API";
 
-const groceryList = () => {
-  return <p>Hello</p>;
+const GroceryList = () => {
+  const [groceryList, setGroceryList] = useState([]);
+
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const getList = () => {
+    API.getGroceryList()
+      .then((res) => {
+        setGroceryList(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <div>
+      <List>
+        {groceryList.map((item) => (
+          <ListItem name={item.name} />
+        ))}
+      </List>
+    </div>
+  );
 };
 
-export default groceryList;
+export default GroceryList;
