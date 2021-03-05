@@ -21,7 +21,6 @@ module.exports = {
       });
   },
   findOne: function (req, res) {
-    console.log(req.params.id);
     db.Recipe.findOne({ _id: req.params.id })
       .then((data) => {
         res.json(data);

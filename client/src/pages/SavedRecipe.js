@@ -12,9 +12,6 @@ const SavedRecipe = () => {
   const getRecipes = () => {
     API.recipeList()
       .then((res) => {
-        const recipeNames = res.data.map((recipe) => {
-          return recipe.name;
-        });
         setRecipeList(res.data);
       })
       .catch((err) => console.log(err));
@@ -24,7 +21,9 @@ const SavedRecipe = () => {
     const recipeID = event.target.getAttribute("value");
     API.getRecipe(recipeID)
       .then((res) => {
-        console.log(res.data);
+        API.addToGroceryList(res.data.ingredients)
+          .then((data) => {})
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };

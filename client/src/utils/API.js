@@ -11,6 +11,10 @@ export default {
   },
 
   //Get route for grocery list
+  //Post route for grocery list
+  addToGroceryList: function (ingredientsArray) {
+    return axios.post("/api/groceryList/add", ingredientsArray);
+  },
   //Get route for recipe list
   recipeList: function () {
     return axios.get("/api/recipes/all");

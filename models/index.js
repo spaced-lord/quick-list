@@ -3,4 +3,5 @@ module.exports = {
   Ingredient: require("./ingredientsModel"),
   IngredientType: require("./ingredientTypeModel"),
   User: require("./user"),
+  GroceryList: require("./groceryListModel"),
 };
