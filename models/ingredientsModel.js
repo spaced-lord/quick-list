@@ -6,8 +6,8 @@ const Schema = mongoose.Schema;
 
 //Defines object structure for collection
 const ingredientsSchema = new Schema({
-  name: String,
-  type: String,
+  name: { type: String, required: true },
+  type: { type: String, required: true },
 });
 
 //Creates collection with about schema

@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/groceryList");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/groceryList", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const ingredientSeedData = [
   {
@@ -11,10 +14,6 @@ const ingredientSeedData = [
   {
     type: "Grain",
     name: "Pasta",
-  },
-  {
-    type: "Vegetable",
-    name: "Tomato",
   },
   {
     type: "Vegetable",
@@ -71,7 +70,7 @@ const ingredientType = [
   { type: "Other" },
 ];
 
-db.IngredientType.remove({})
+db.IngredientType.deleteMany({})
   .then(() => db.IngredientType.collection.insertMany(ingredientType))
   .then(() => process.exit(0))
   .catch((err) => {
@@ -79,7 +78,7 @@ db.IngredientType.remove({})
     process.exit(2);
   });
 
-db.Ingredient.remove({})
+db.Ingredient.deleteMany({})
   .then(() => db.Ingredient.collection.insertMany(ingredientSeedData))
   .then(() => process.exit(0))
   .catch((err) => {

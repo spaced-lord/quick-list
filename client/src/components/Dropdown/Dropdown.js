@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Dropdown = ({ defaultText, name, onChange, children }) => {
+export const Dropdown = ({ value, defaultText, name, onChange, children }) => {
   return (
-    <select name={name} onChange={onChange} defaultValue="default">
+    <select name={name} onChange={onChange} value={value}>
       <option value="default" disabled hidden>
         Choose {defaultText}
       </option>
