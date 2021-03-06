@@ -179,7 +179,7 @@ const RecipeSeedData = [
       "Vegetable Oil",
       "Syrup",
     ],
-    favorite: false,
+    favorite: true,
     name: "Pancakes",
   },
   {

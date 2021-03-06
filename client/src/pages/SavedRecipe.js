@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { List, ListItem } from "../components/List/List";
-import { BorderStar, SolidStar } from "../components/FontAwesome/FontAwesome";
 import API from "../utils/API";
 
 const SavedRecipe = () => {
@@ -13,6 +12,7 @@ const SavedRecipe = () => {
   const getRecipes = () => {
     API.recipeList()
       .then((res) => {
+        console.log(res.data);
         setRecipeList(res.data);
       })
       .catch((err) => console.log(err));
@@ -39,10 +39,10 @@ const SavedRecipe = () => {
             key={recipe._id}
             value={recipe._id}
             onClick={handleRecipeClick}
+            favorite={recipe.favorite}
+            needFav="true"
           />
         ))}
-        <BorderStar />
-        <SolidStar />
       </List>
     </div>
   );

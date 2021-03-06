@@ -22,7 +22,7 @@ const GroceryList = () => {
     <div>
       <List>
         {groceryList.map((item) => (
-          <ListItem name={item.name} />
+          <ListItem name={item.name} key={item._id} />
         ))}
       </List>
     </div>
