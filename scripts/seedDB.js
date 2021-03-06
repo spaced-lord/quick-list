@@ -59,6 +59,102 @@ const ingredientSeedData = [
     type: "Meat",
     name: "New York Strip",
   },
+  {
+    type: "Other",
+    name: "Flour",
+  },
+  {
+    type: "Other",
+    name: "Sugar",
+  },
+  {
+    type: "Other",
+    name: "Baking Powder",
+  },
+  {
+    type: "Other",
+    name: "Salt",
+  },
+  {
+    type: "Dairy",
+    name: "Butter",
+  },
+  {
+    type: "Other",
+    name: "Eggs",
+  },
+  {
+    type: "Other",
+    name: "Vegetable Oil",
+  },
+  {
+    type: "Other",
+    name: "Syrup",
+  },
+  {
+    type: "Grain",
+    name: "Fettuccini Noodles",
+  },
+  {
+    type: "Meat",
+    name: "Raw Shrimp",
+  },
+  {
+    type: "Other",
+    name: "Olive Oil",
+  },
+  {
+    type: "Vegetable",
+    name: "Onion",
+  },
+  {
+    type: "Vegetable",
+    name: "Garlic Clove",
+  },
+  {
+    type: "Other",
+    name: "White Wine",
+  },
+  {
+    type: "Dairy",
+    name: "Whipping Cream",
+  },
+  {
+    type: "Dairy",
+    name: "Parmesan Cheese",
+  },
+  {
+    type: "Other",
+    name: "Black Pepper",
+  },
+  {
+    type: "Vegetable",
+    name: "Parsley",
+  },
+  {
+    type: "Other",
+    name: "Paprika",
+  },
+  {
+    type: "Meat",
+    name: "Salmon",
+  },
+  {
+    type: "Other",
+    name: "Cayenne Pepper",
+  },
+  {
+    type: "Other",
+    name: "Honey",
+  },
+  {
+    type: "Other",
+    name: "Lemon Juice",
+  },
+  {
+    type: "Fruit",
+    name: "Lemon",
+  },
 ];
 
 const ingredientType = [
@@ -70,12 +166,64 @@ const ingredientType = [
   { type: "Other" },
 ];
 
+const RecipeSeedData = [
+  {
+    ingredients: [
+      "Flour",
+      "Sugar",
+      "Baking Powder",
+      "Salt",
+      "Milk",
+      "Butter",
+      "Eggs",
+      "Vegetable Oil",
+      "Syrup",
+    ],
+    favorite: false,
+    name: "Pancakes",
+  },
+  {
+    ingredients: [
+      "Fettuccini Noodles",
+      "Raw Shrimp",
+      "Olive Oil",
+      "Onion",
+      "Butter",
+      "Garlic Clove",
+      "White Wine",
+      "Whipping Cream",
+      "Parmesan Cheese",
+      "Salt",
+      "Black Pepper",
+      "Parsley",
+      "Paprika",
+      "Salt",
+    ],
+    favorite: false,
+    name: "Creamy Shrimp Pasta",
+  },
+  {
+    ingredients: [
+      "Salmon",
+      "Salt",
+      "Cayenne Pepper",
+      "Honey",
+      "Garlic Clove",
+      "Lemon Juice",
+      "Lemon",
+      "Parsley",
+    ],
+    favorite: false,
+    name: "Garlic Salmon",
+  },
+];
+
 db.IngredientType.deleteMany({})
   .then(() => db.IngredientType.collection.insertMany(ingredientType))
   .then(() => process.exit(0))
   .catch((err) => {
     console.log(err);
-    process.exit(2);
+    process.exit(1);
   });
 
 db.Ingredient.deleteMany({})
@@ -83,5 +231,13 @@ db.Ingredient.deleteMany({})
   .then(() => process.exit(0))
   .catch((err) => {
     console.log(err);
-    process.exit(2);
+    process.exit(1);
+  });
+
+db.Recipe.deleteMany({})
+  .then(() => db.Recipe.collection.insertMany(RecipeSeedData))
+  .then(() => process.exit(0))
+  .catch((err) => {
+    console.log(err);
+    process.exit(1);
   });

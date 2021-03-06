@@ -1,8 +1,7 @@
 import React from "react";
-import Login from '../components/GoogleAuth/Login';
-import Logout from '../components/GoogleAuth/Logout';
+import Login from "../components/GoogleAuth/Login";
+import Logout from "../components/GoogleAuth/Logout";
 import { Link, Route } from "react-router-dom";
-import Signup from "../pages/signup";
 
 function Home(props) {
   {
@@ -12,8 +11,8 @@ function Home(props) {
     <div>
       <h2>Login</h2>
       <form>
-      <Login />
-      <Logout />
+        <Login />
+        <Logout />
       </form>
       <h2>Why do we use it? </h2>
       <p>

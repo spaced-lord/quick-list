@@ -22,22 +22,4 @@ module.exports = {
         }
       });
   },
-  matchIngredient: function (req, res) {
-    db.IngredientType.aggregate([
-      {
-        $lookup: {
-          from: "ingredients",
-          localField: "type",
-          foreignField: "type",
-          as: "ingredientMatch",
-        },
-      },
-    ])
-      .then((data) => res.json(data))
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
-  },
 };

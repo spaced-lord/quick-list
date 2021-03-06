@@ -40,8 +40,6 @@ const NewRecipe = () => {
     return state;
   }, []);
 
-  useEffect(() => {}, []);
-
   //Function for button clicks
   const submitFunction = (event) => {
     //Prevents page reload
@@ -231,11 +229,6 @@ const NewRecipe = () => {
         {pageState.ingredientName === "Placeholder" && (
           <InputBar name="ingredientName" onChange={handleInputChange} />
         )}
-        {console.log(
-          ingredientsArray.length < 1 || Object.keys(ingredient).length > 0
-        )}
-        {/* {console.log(Object.keys(ingredient).length === 0)}
-        {console.log(ingredientsArray.length < 1)} */}
         {recipeState.name ? (
           <div>
             <Button
@@ -275,7 +268,6 @@ const NewRecipe = () => {
       {ingredientsArray.map((item, index) => (
         <p key={index}>{item}</p>
       ))}
-      {console.log(ingredient)}
     </div>
   );
 };
