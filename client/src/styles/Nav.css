@@ -1,3 +1,9 @@
-.section {
+.sections {
+  float: left;
+  clear: both;
   font-family: fantasy;
+}
+.navFloat {
+  float: right;
+  clear: both;
 }
