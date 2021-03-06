@@ -36,7 +36,19 @@ function NavTabs() {
               : "nav-link"
           }
         >
-          SavedRecipe
+          My Recipes
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/GroceryList"
+          className={
+            location.pathname === "/GroceryList"
+              ? "nav-link active"
+              : "nav-link"
+          }
+        >
+          Grocery List
         </Link>
       </li>
     </ul>

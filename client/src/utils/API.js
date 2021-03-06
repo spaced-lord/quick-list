@@ -11,6 +11,9 @@ export default {
   },
 
   //Get route for grocery list
+  getGroceryList: function () {
+    return axios.get("/api/groceryList/all");
+  },
   //Post route for grocery list
   addToGroceryList: function (ingredientsArray) {
     return axios.post("/api/groceryList/add", ingredientsArray);

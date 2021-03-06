@@ -3,6 +3,7 @@ const router = require("express").Router();
 const groceryListController = require("../../controllers/groceryListController");
 
 //Route to required method of controller
+router.route("/all").get(groceryListController.getGroceryList);
 router.route("/add").post(groceryListController.addToList);
 
 //Export router
