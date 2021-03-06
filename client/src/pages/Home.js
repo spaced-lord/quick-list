@@ -1,15 +1,14 @@
 import React from "react";
-import Login from "../components/GoogleAuth/Login";
-import Logout from "../components/GoogleAuth/Logout";
+
 import "../styles/Home.css";
 import { Link, Route } from "react-router-dom";
 
 function Home(props) {
   {
-    console.log(props);
+    console.log("props:", props);
   }
   return (
-    <div>
+    <div className="article">
       <form>{/* <Login />
         <Logout /> */}</form>
       <h2>Why do we use it? </h2>
