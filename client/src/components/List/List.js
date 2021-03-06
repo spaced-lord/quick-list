@@ -1,13 +1,20 @@
 import React from "react";
+import {
+  BorderStar,
+  SolidStar,
+} from "../../components/FontAwesome/FontAwesome";
 
 export function List({ children }) {
-  return <ul>{children}</ul>;
+  return <ul style={{ listStyle: "none" }}>{children}</ul>;
 }
 
-export function ListItem({ name, data, value, favorite, onClick }) {
+export function ListItem({ name, value, favorite, onClick, needFav }) {
   return (
-    <li value={value} onClick={onClick}>
-      {name}
-    </li>
+    <div style={{ border: "solid 1px black" }}>
+      <li value={value} onClick={onClick}>
+        {name}
+        {needFav ? !favorite ? <BorderStar /> : <SolidStar /> : null}
+      </li>
+    </div>
   );
 }
