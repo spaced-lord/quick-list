@@ -1,9 +1,11 @@
-.sections {
-  float: left;
-  clear: both;
-  font-family: fantasy;
-}
-.navFloat {
+.LogInOUT {
   float: right;
   clear: both;
+  display: inline;
+  margin-right: 25px;
+}
+.nav-item {
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 3px;
 }

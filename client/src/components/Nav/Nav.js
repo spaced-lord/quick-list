@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import Login from "../../components/GoogleAuth/Login";
 import Logout from "../../components/GoogleAuth/Logout";
+import "../../styles/Nav.css";
 
 function NavTabs() {
   // We'll go into the Hooks API later, for now, we are just using some code
@@ -10,12 +11,12 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="nav nav-tabs">
-      <span className="section">
-        <Login />
-        <Logout />
+    <div className="">
+      <span className="LogInOUT">
+        <Login></Login>
+        <Logout></Logout>
       </span>
-      <span className="nav-item sections">
+      <span className="nav-item ">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -23,7 +24,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="nav-item sections">
+      <span className="nav-item ">
         <Link
           to="/NewRecipe"
           className={
@@ -33,7 +34,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="nav-item sections">
+      <span className="nav-item ">
         <Link
           to="/SavedRecipe"
           className={
@@ -45,7 +46,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="nav-item sections">
+      <span className="nav-item ">
         <Link
           to="/GroceryList"
           className={
