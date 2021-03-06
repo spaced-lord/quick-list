@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { List, ListItem } from "../components/List/List";
+import { BorderStar, SolidStar } from "../components/FontAwesome/FontAwesome";
 import API from "../utils/API";
 
 const SavedRecipe = () => {
@@ -40,6 +41,8 @@ const SavedRecipe = () => {
             onClick={handleRecipeClick}
           />
         ))}
+        <BorderStar />
+        <SolidStar />
       </List>
     </div>
   );
