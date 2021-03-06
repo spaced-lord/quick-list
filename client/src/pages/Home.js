@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "../components/GoogleAuth/Login";
 import Logout from "../components/GoogleAuth/Logout";
+import "../styles/Home.css";
 import { Link, Route } from "react-router-dom";
 
 function Home(props) {
@@ -9,11 +10,8 @@ function Home(props) {
   }
   return (
     <div>
-      <h2>Login</h2>
-      <form>
-        <Login />
-        <Logout />
-      </form>
+      <form>{/* <Login />
+        <Logout /> */}</form>
       <h2>Why do we use it? </h2>
       <p>
         It is a long established fact that a reader will be distracted by the
