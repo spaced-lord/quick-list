@@ -11,11 +11,7 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="">
-      <span className="LogInOUT">
-        <Login></Login>
-        <Logout></Logout>
-      </span>
+    <div className="navBar">
       <span className="nav-item ">
         <Link
           to="/"
@@ -58,6 +54,14 @@ function NavTabs() {
           Grocery List
         </Link>
       </span>
+
+      <span className="LogInOUT">
+        <Login className=""></Login>
+      </span>
+      <span className="LogInOUT">
+        <Logout className=""></Logout>
+      </span>
+      <h1 className="title">The Quick-List App</h1>
     </div>
   );
 }

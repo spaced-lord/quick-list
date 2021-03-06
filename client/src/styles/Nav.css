@@ -9,3 +9,11 @@
   margin-left: 10px;
   border: 3px;
 }
+.navBar {
+  background-color: white;
+  height: 50px;
+}
+.title {
+  text-align: center;
+  margin-top: -10px;
+}
