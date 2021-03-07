@@ -1,15 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import { GoogleLogin } from 'react-google-login';
+import { GoogleLogin } from "react-google-login";
 // refresh token
-import { refreshTokenSetup } from '../../utils/refreshToken';
+import { refreshTokenSetup } from "../../utils/refreshToken";
 
 const clientId =
-  '659871250507-bokvnt4700ki1lu59kp9h50ccro3g721.apps.googleusercontent.com';
+  "659871250507-bokvnt4700ki1lu59kp9h50ccro3g721.apps.googleusercontent.com";
 
 function Login() {
   const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
+    console.log("Login Success: currentUser:", res.profileObj);
+    const userID = res.profileObj.googleId;
+    console.log(userID);
     alert(
       `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
     );
@@ -17,7 +19,7 @@ function Login() {
   };
 
   const onFailure = (res) => {
-    console.log('Login failed: res:', res);
+    console.log("Login failed: res:", res);
     alert(
       `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
     );
@@ -30,8 +32,8 @@ function Login() {
         buttonText="Login"
         onSuccess={onSuccess}
         onFailure={onFailure}
-        cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
+        cookiePolicy={"single_host_origin"}
+        style={{ marginTop: "100px" }}
         isSignedIn={true}
       />
     </div>
