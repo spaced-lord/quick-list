@@ -32,13 +32,16 @@ export default {
   updateFav: function (recipeID) {
     return axios.put("/api/recipes/" + recipeID);
   },
+  deleteRecipe: function (recipeID) {
+    return axios.delete("/api/recipes/" + recipeID);
+  },
   //Post route for ingredient
   newIngredient: function (ingredient) {
-    console.log(ingredient);
     return axios.post("/api/ingredient/new", ingredient);
   },
 
   //Delete for grocery list item
   //Delete for recipe list
+
   //Post for user login?
 };

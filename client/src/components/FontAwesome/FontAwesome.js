@@ -20,6 +20,10 @@ export const SolidStar = ({ onClick, value }) => {
   );
 };
 
-export const DeleteButton = () => {
-  return <FontAwesomeIcon icon={deleteButton} />;
+export const DeleteButton = ({ onClick, value }) => {
+  return (
+    <span onClick={onClick} value={value}>
+      <FontAwesomeIcon style={{ pointerEvents: "none" }} icon={deleteButton} />
+    </span>
+  );
 };

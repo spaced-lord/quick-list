@@ -7,7 +7,8 @@ router.route("/all").get(recipeController.getAll);
 router
   .route("/:id")
   .get(recipeController.findOne)
-  .put(recipeController.updateOne);
+  .put(recipeController.updateOne)
+  .delete(recipeController.deleteOne);
 router.route("/new").post(recipeController.createNew);
 
 //Export router

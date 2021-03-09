@@ -50,4 +50,11 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  deleteOne: function (req, res) {
+    db.Recipe.deleteOne({ _id: req.params.id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => console.log(err));
+  },
 };

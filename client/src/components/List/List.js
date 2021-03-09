@@ -16,7 +16,7 @@ export function ListItem({
   onClick,
   needFav,
   favFunc,
-  deleteFunc,
+  delFunc,
 }) {
   return (
     <div style={{ border: "solid 1px black" }}>
@@ -25,12 +25,12 @@ export function ListItem({
       </li>
       {needFav ? (
         !favorite ? (
-          <BorderStar value={value} onClick={favFunc} favorite={favorite} />
+          <BorderStar value={value} onClick={favFunc} />
         ) : (
-          <SolidStar value={value} onClick={favFunc} favorite={favorite} />
+          <SolidStar value={value} onClick={favFunc} />
         )
       ) : null}
-      <DeleteButton onClick={deleteFunc} />
+      <DeleteButton onClick={delFunc} value={value} />
     </div>
   );
 }
