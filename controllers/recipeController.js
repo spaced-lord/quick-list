@@ -27,4 +27,27 @@ module.exports = {
       })
       .catch((err) => console.log(err));
   },
+  updateOne: function (req, res) {
+    db.Recipe.findOne({ _id: req.params.id })
+      .then((data) => {
+        if (data.favorite) {
+          db.Recipe.findByIdAndUpdate(
+            { _id: req.params.id },
+            { $set: { favorite: false } },
+            { new: true }
+          )
+            .then((newData) => res.json(newData))
+            .catch((err) => console.log(err));
+        } else {
+          db.Recipe.findByIdAndUpdate(
+            { _id: req.params.id },
+            { $set: { favorite: true } },
+            { new: true }
+          )
+            .then((newData) => res.json(newData))
+            .catch((err) => console.log(err));
+        }
+      })
+      .catch((err) => console.log(err));
+  },
 };
