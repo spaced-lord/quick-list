@@ -9,7 +9,6 @@ export default {
   ingredientMatchList: function (type) {
     return axios.post("/api/types/match", type);
   },
-
   //Get route for grocery list
   getGroceryList: function () {
     return axios.get("/api/groceryList/all");
@@ -28,8 +27,10 @@ export default {
   },
   //Post route for recipe
   newRecipe: function (recipe) {
-    console.log(recipe);
     return axios.post("/api/recipes/new", recipe);
+  },
+  updateFav: function (recipeID) {
+    return axios.put("/api/recipes/" + recipeID);
   },
   //Post route for ingredient
   newIngredient: function (ingredient) {
