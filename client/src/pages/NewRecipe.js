@@ -119,7 +119,11 @@ const NewRecipe = () => {
           name: recipeState.name,
           ingredients: ingredientsArray,
         })
-          .then((res) => {})
+          .then((res) => {
+            API.addToGroceryList(ingredientsArray)
+              .then((res) => {})
+              .catch((err) => console.log(err));
+          })
           .catch((err) => {
             if (err) {
               console.log(err);
