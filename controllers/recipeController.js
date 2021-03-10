@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = {
   getAll: function (req, res) {
     db.Recipe.find()
+      .sort({ name: 1 })
       .then((data) => res.json(data))
       .catch((err) => {
         if (err) {
