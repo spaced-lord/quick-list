@@ -114,16 +114,16 @@ const NewRecipe = () => {
           ...previousState,
           ingredient.ingredientName,
         ]);
+
+        API.addToGroceryList(ingredientsArray)
+          .then((res) => {})
+          .catch((err) => console.log(err));
         //Post new recipe to database
         API.newRecipe({
           name: recipeState.name,
           ingredients: ingredientsArray,
         })
-          .then((res) => {
-            API.addToGroceryList(ingredientsArray)
-              .then((res) => {})
-              .catch((err) => console.log(err));
-          })
+          .then((res) => {})
           .catch((err) => {
             if (err) {
               console.log(err);

@@ -13,7 +13,11 @@ const GroceryList = () => {
   const getList = () => {
     API.getGroceryList()
       .then((res) => {
-        setGroceryList(res.data);
+        const groceryListArray = res.data.map((item) => {
+          return item.name;
+        });
+        const grocerySet = [...new Set(groceryListArray)];
+        setGroceryList(grocerySet);
       })
       .catch((err) => console.log(err));
   };
@@ -38,11 +42,11 @@ const GroceryList = () => {
   return (
     <div>
       <List>
-        {groceryList.map((item) => (
+        {groceryList.map((item, index) => (
           <ListItem
-            name={item.name}
-            key={item._id}
-            value={item._id}
+            name={item}
+            value={item}
+            key={index}
             delFunc={delFunction}
           />
         ))}
