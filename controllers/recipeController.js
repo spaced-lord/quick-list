@@ -3,6 +3,7 @@ const db = require("../models");
 module.exports = {
   getAll: function (req, res) {
     db.Recipe.find()
+      .sort({ name: 1 })
       .then((data) => res.json(data))
       .catch((err) => {
         if (err) {
@@ -47,6 +48,13 @@ module.exports = {
             .then((newData) => res.json(newData))
             .catch((err) => console.log(err));
         }
+      })
+      .catch((err) => console.log(err));
+  },
+  deleteOne: function (req, res) {
+    db.Recipe.deleteOne({ _id: req.params.id })
+      .then((data) => {
+        res.json(data);
       })
       .catch((err) => console.log(err));
   },

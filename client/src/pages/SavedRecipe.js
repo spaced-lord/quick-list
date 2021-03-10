@@ -47,6 +47,14 @@ const SavedRecipe = () => {
       });
   };
 
+  const deleteFunction = (event) => {
+    API.deleteRecipe(event.target.getAttribute("value"))
+      .then((res) => {
+        getRecipes();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <List>
@@ -60,6 +68,7 @@ const SavedRecipe = () => {
             favorite={recipe.favorite}
             needFav="true"
             favFunc={favFunction}
+            delFunc={deleteFunction}
           />
         ))}
       </List>
@@ -74,6 +83,7 @@ const SavedRecipe = () => {
             favorite={recipe.favorite}
             needFav="true"
             favFunc={favFunction}
+            delFunc={deleteFunction}
           />
         ))}
       </List>
