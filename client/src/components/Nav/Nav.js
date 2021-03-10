@@ -11,8 +11,8 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="navBar grid-cols-11">
-      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
+    <div className="navBar container grid-cols-12 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -20,7 +20,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
         <Link
           to="/NewRecipe"
           className={
@@ -30,7 +30,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
         <Link
           to="/SavedRecipe"
           className={
@@ -42,7 +42,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5">
         <Link
           to="/GroceryList"
           className={
@@ -54,7 +54,7 @@ function NavTabs() {
           Grocery List
         </Link>
       </span>
-      <div className="flex justify-end">
+      <div className="flex justify-end -my-8">
         <span className="LogInOUT">
           <Login className=""></Login>
         </span>
@@ -62,7 +62,9 @@ function NavTabs() {
           <Logout className=""></Logout>
         </span>
       </div>
-      <h1 className="title text-green-500 text-6xl p-10">The Quick-List App</h1>
+      <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
+        Quick-List
+      </h1>
     </div>
   );
 }
