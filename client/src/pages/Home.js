@@ -8,7 +8,7 @@ function Home(props) {
     console.log("props:", props);
   }
   return (
-    <div className="article">
+    <div className="article homeBackground">
       <br className=""></br>
       <h2 className="aside main">Enter ingredients to your favorite meals! </h2>
       <h2 className="aside">Have them stored to select at anytime! </h2>
