@@ -2,14 +2,16 @@ import React from "react";
 
 const Button = ({ name, onClick, text, disabled }) => {
   return (
-    <button
-      name={name}
-      onClick={onClick}
-      disabled={disabled}
-      class="btn bg-blue-500 rounded"
-    >
-      {text}
-    </button>
+    <div className="container">
+      <button
+        className="bg-green-500 hover:bg-green-300 text-white font-bold center py-2 px-4 rounded"
+        name={name}
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {text}
+      </button>
+    </div>
   );
 };
 

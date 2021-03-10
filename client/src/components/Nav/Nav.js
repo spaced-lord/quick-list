@@ -11,8 +11,8 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="navBar">
-      <span className="nav-item ">
+    <div className="navBar container">
+      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -20,7 +20,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
         <Link
           to="/NewRecipe"
           className={
@@ -30,7 +30,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
         <Link
           to="/SavedRecipe"
           className={
@@ -42,7 +42,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
         <Link
           to="/GroceryList"
           className={
@@ -61,7 +61,7 @@ function NavTabs() {
       <span className="LogInOUT">
         <Logout className=""></Logout>
       </span>
-      <h1 className="title">The Quick-List App</h1>
+      <h1 className="title text-green-500 text-6xl p-10">The Quick-List App</h1>
     </div>
   );
 }
