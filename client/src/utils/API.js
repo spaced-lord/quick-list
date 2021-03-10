@@ -17,6 +17,16 @@ export default {
   addToGroceryList: function (ingredientsArray) {
     return axios.post("/api/groceryList/add", ingredientsArray);
   },
+  //Delete for grocery list item
+  deleteGroceryItem: function (itemID) {
+    console.log(itemID);
+    return axios.delete("/api/groceryList/" + itemID);
+  },
+  //Clear grocery list
+  clearList: function () {
+    console.log("here");
+    return axios.delete("/api/groceryList/clear/list");
+  },
   //Get route for recipe list
   recipeList: function () {
     return axios.get("/api/recipes/all");
@@ -29,9 +39,11 @@ export default {
   newRecipe: function (recipe) {
     return axios.post("/api/recipes/new", recipe);
   },
+  //Update to add recipe to favorites
   updateFav: function (recipeID) {
     return axios.put("/api/recipes/" + recipeID);
   },
+  //Delete for recipe list
   deleteRecipe: function (recipeID) {
     return axios.delete("/api/recipes/" + recipeID);
   },
@@ -39,9 +51,10 @@ export default {
   newIngredient: function (ingredient) {
     return axios.post("/api/ingredient/new", ingredient);
   },
-
   //Delete for grocery list item
-  //Delete for recipe list
+  deleteGroceryItem: function (itemID) {
+    return axios.delete("api/groceryList/" + itemID);
+  },
 
   //Post for user login?
 };
