@@ -15,6 +15,7 @@ export default {
   },
   //Post route for grocery list
   addToGroceryList: function (ingredientsArray) {
+    console.log(ingredientsArray);
     return axios.post("/api/groceryList/add", ingredientsArray);
   },
   //Delete for grocery list item
@@ -50,10 +51,6 @@ export default {
   //Post route for ingredient
   newIngredient: function (ingredient) {
     return axios.post("/api/ingredient/new", ingredient);
-  },
-  //Delete for grocery list item
-  deleteGroceryItem: function (itemID) {
-    return axios.delete("api/groceryList/" + itemID);
   },
 
   //Post for user login?
