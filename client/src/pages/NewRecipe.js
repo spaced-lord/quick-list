@@ -5,6 +5,7 @@ import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
 import history from "../utils/history";
+import "../styles/NewRecipe.css";
 
 //Create page component
 const NewRecipe = () => {
@@ -193,7 +194,7 @@ const NewRecipe = () => {
 
   //Return for the page
   return (
-    <div>
+    <div className="recipeform">
       <form onSubmit={submitFunction}>
         {recipeState.name ? (
           <div>
