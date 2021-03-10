@@ -54,7 +54,7 @@ function NavTabs() {
           Grocery List
         </Link>
       </span>
-      <div className="container flex justify-end">
+      <div className="flex justify-end">
         <span className="LogInOUT">
           <Login className=""></Login>
         </span>
