@@ -15,4 +15,16 @@ module.exports = {
       .then((data) => res.json(data))
       .catch((err) => console.log(err));
   },
+  deleteOne: function (req, res) {
+    db.GroceryList.deleteOne({ _id: req.params.id })
+      .then((data) => res.json(data))
+      .catch((err) => console.log(err));
+  },
+  deleteAll: function (req, res) {
+    db.GroceryList.deleteMany({})
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => console.log(err));
+  },
 };
