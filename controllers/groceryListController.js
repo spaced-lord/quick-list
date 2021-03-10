@@ -12,11 +12,12 @@ module.exports = {
   },
   getGroceryList: function (req, res) {
     db.GroceryList.find()
+      .sort({ name: 1 })
       .then((data) => res.json(data))
       .catch((err) => console.log(err));
   },
   deleteOne: function (req, res) {
-    db.GroceryList.deleteOne({ _id: req.params.id })
+    db.GroceryList.deleteMany({ name: req.params.name })
       .then((data) => res.json(data))
       .catch((err) => console.log(err));
   },

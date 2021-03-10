@@ -15,17 +15,14 @@ export default {
   },
   //Post route for grocery list
   addToGroceryList: function (ingredientsArray) {
-    console.log(ingredientsArray);
     return axios.post("/api/groceryList/add", ingredientsArray);
   },
   //Delete for grocery list item
-  deleteGroceryItem: function (itemID) {
-    console.log(itemID);
-    return axios.delete("/api/groceryList/" + itemID);
+  deleteGroceryItem: function (itemName) {
+    return axios.delete("/api/groceryList/" + itemName);
   },
   //Clear grocery list
   clearList: function () {
-    console.log("here");
     return axios.delete("/api/groceryList/clear/list");
   },
   //Get route for recipe list
