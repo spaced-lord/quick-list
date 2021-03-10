@@ -1,6 +1,12 @@
+body {
+  background-color: green;
+}
+
+/* Temporarily changed background color to provide enough contrast to see white elements */
+
 .recipeform {
-  margin-top: 50px;
-  margin-left: 50%;
+  margin-top: 200px;
+  margin-left: 40%;
 }
 p {
   font-size: 22px;
