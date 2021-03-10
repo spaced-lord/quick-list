@@ -7,7 +7,6 @@ import HomePage from "./pages/Home";
 import GroceryList from "./pages/GroceryList";
 import SavedRecipe from "./pages/SavedRecipe";
 import history from "./utils/history";
-import "tailwindcss/tailwind.css";
 
 // function App() {
 //   return (

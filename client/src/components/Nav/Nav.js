@@ -11,7 +11,7 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="navBar container">
+    <div className="navBar grid-cols-11">
       <span className="bg-transparent hover:bg-green-300 font-bold mx-6">
         <Link
           to="/"
@@ -54,13 +54,14 @@ function NavTabs() {
           Grocery List
         </Link>
       </span>
-
-      <span className="LogInOUT">
-        <Login className=""></Login>
-      </span>
-      <span className="LogInOUT">
-        <Logout className=""></Logout>
-      </span>
+      <div className="container flex justify-end">
+        <span className="LogInOUT">
+          <Login className=""></Login>
+        </span>
+        <span className="LogInOUT">
+          <Logout className=""></Logout>
+        </span>
+      </div>
       <h1 className="title text-green-500 text-6xl p-10">The Quick-List App</h1>
     </div>
   );
