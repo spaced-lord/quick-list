@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { List, ListItem } from "../components/List/List";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
+import LoginContext from "../utils/LoginContext";
 
 const GroceryList = () => {
+  const { id } = useContext(LoginContext);
   const [groceryList, setGroceryList] = useState([]);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ const GroceryList = () => {
   }, []);
 
   const getList = () => {
-    API.getGroceryList()
+    API.getGroceryList({ user: id })
       .then((res) => {
         const groceryListArray = res.data.map((item) => {
           return item.name;
@@ -24,7 +26,10 @@ const GroceryList = () => {
 
   const delFunction = (event) => {
     console.log(event.target.getAttribute("value"));
-    API.deleteGroceryItem(event.target.getAttribute("value"))
+    API.deleteGroceryItem({
+      name: event.target.getAttribute("value"),
+      user: id,
+    })
       .then((res) => {
         getList();
       })
@@ -32,7 +37,7 @@ const GroceryList = () => {
   };
 
   const clearList = (event) => {
-    API.clearList()
+    API.clearList({ user: id })
       .then((res) => {
         getList();
       })
@@ -41,17 +46,23 @@ const GroceryList = () => {
 
   return (
     <div>
-      <List>
-        {groceryList.map((item, index) => (
-          <ListItem
-            name={item}
-            value={item}
-            key={index}
-            delFunc={delFunction}
-          />
-        ))}
-      </List>
-      <Button name="deleteAll" onClick={clearList} text="Clear List" />
+      {id ? (
+        <>
+          <List>
+            {groceryList.map((item, index) => (
+              <ListItem
+                name={item}
+                value={item}
+                key={index}
+                delFunc={delFunction}
+              />
+            ))}
+          </List>
+          <Button name="deleteAll" onClick={clearList} text="Clear List" />
+        </>
+      ) : (
+        <h1>Please login</h1>
+      )}
     </div>
   );
 };

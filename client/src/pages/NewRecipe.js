@@ -117,8 +117,11 @@ const NewRecipe = () => {
           ...previousState,
           ingredient.ingredientName,
         ]);
+        const groceryArray = ingredientsArray.map((item) => {
+          return { name: item, user: id };
+        });
 
-        API.addToGroceryList(ingredientsArray)
+        API.addToGroceryList(groceryArray)
           .then((res) => {})
           .catch((err) => console.log(err));
         //Post new recipe to database

@@ -10,20 +10,22 @@ export default {
     return axios.post("/api/types/match", type);
   },
   //Get route for grocery list
-  getGroceryList: function () {
-    return axios.get("/api/groceryList/all");
+  getGroceryList: function (user) {
+    console.log(user);
+    return axios.get("/api/groceryList/all", { params: user });
   },
   //Post route for grocery list
   addToGroceryList: function (ingredientsArray) {
     return axios.post("/api/groceryList/add", ingredientsArray);
   },
   //Delete for grocery list item
-  deleteGroceryItem: function (itemName) {
-    return axios.delete("/api/groceryList/" + itemName);
+  deleteGroceryItem: function (userItem) {
+    console.log(userItem);
+    return axios.delete("/api/groceryList/item", { params: userItem });
   },
   //Clear grocery list
-  clearList: function () {
-    return axios.delete("/api/groceryList/clear/list");
+  clearList: function (user) {
+    return axios.delete("/api/groceryList/clear/list", { params: user });
   },
   //Get route for recipe list
   recipeList: function () {

@@ -3,6 +3,7 @@ import React from "react";
 import { GoogleLogin } from "react-google-login";
 // refresh token
 import { refreshTokenSetup } from "../../utils/refreshToken";
+import history from "../../utils/history";
 
 const clientId =
   "659871250507-bokvnt4700ki1lu59kp9h50ccro3g721.apps.googleusercontent.com";
@@ -11,6 +12,7 @@ function Login({ login }) {
   const onSuccess = (res) => {
     console.log("Login Success: currentUser:", res.profileObj);
     login(res.profileObj.googleId);
+    history.push("/");
     alert(
       `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
     );
