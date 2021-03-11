@@ -12,7 +12,7 @@ function NavTabs() {
 
   return (
     <div className="navBar container grid-cols-12 py-5">
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4 navLinks">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -20,7 +20,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
         <Link
           to="/NewRecipe"
           className={
@@ -30,7 +30,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
         <Link
           to="/SavedRecipe"
           className={
@@ -42,7 +42,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5 navLinks">
         <Link
           to="/GroceryList"
           className={
@@ -62,9 +62,9 @@ function NavTabs() {
           <Logout className=""></Logout>
         </span>
       </div>
-      <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
+      <span className=" text-green-500 text-6xl subpixel-antialiased title ui-monospace">
         Quick-List
-      </h1>
+      </span>
     </div>
   );
 }
