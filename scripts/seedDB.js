@@ -155,6 +155,10 @@ const ingredientSeedData = [
     type: "Fruit",
     name: "Lemon",
   },
+  {
+    type: "Fruit",
+    name: "Watermelon",
+  },
 ];
 
 const ingredientType = [

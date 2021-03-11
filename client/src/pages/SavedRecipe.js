@@ -63,6 +63,7 @@ const SavedRecipe = () => {
     <div>
       {id ? (
         <>
+          <h1>Favorites</h1>
           <List>
             {favRecipeList.map((recipe) => (
               <ListItem
@@ -78,6 +79,7 @@ const SavedRecipe = () => {
               />
             ))}
           </List>
+          <h1>Complete List</h1>
           <List>
             {recipeList.map((recipe) => (
               <ListItem

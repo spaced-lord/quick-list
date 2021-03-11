@@ -4,12 +4,13 @@ import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
-// import history from "../utils/history";
+import { useHistory } from "react-router-dom";
 import "../styles/NewRecipe.css";
 import LoginContext from "../utils/LoginContext";
 
 //Create page component
 const NewRecipe = () => {
+  const history = useHistory();
   const { id } = useContext(LoginContext);
   //State for ingredient
   const [ingredient, setIngredient] = useState({});
@@ -141,17 +142,11 @@ const NewRecipe = () => {
         setRecipeState({});
         setIngredientsArray([]);
         setIngredient({});
-
-        // history.push("/GroceryList");
-        refreshPage();
+        history.push("/GroceryList");
         break;
       default:
         break;
     }
-  };
-
-  const refreshPage = () => {
-    window.location.reload();
   };
 
   //Function to handle dropdown changes

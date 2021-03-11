@@ -35,7 +35,6 @@ export default {
   },
   //Post route for recipe
   newRecipe: function (recipe) {
-    console.log(recipe);
     return axios.post("/api/recipes/new", recipe);
   },
   //Update to add recipe to favorites
