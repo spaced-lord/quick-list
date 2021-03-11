@@ -4,7 +4,7 @@ import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
-import history from "../utils/history";
+// import history from "../utils/history";
 import "../styles/NewRecipe.css";
 import LoginContext from "../utils/LoginContext";
 
@@ -142,7 +142,7 @@ const NewRecipe = () => {
         setIngredientsArray([]);
         setIngredient({});
 
-        history.push("/GroceryList");
+        // history.push("/GroceryList");
         refreshPage();
         break;
       default:
