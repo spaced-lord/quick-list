@@ -63,7 +63,7 @@ function NavTabs() {
         </span>
       </div>
       <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
-        Quick-List
+        QuickList
       </h1>
     </div>
   );
