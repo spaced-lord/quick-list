@@ -3,7 +3,7 @@ import React from "react";
 const InputBar = ({ name, onChange }) => {
   return (
     <input
-      className="border-gray-300 rounded "
+      className="rounded shadow-lg m-3 justify-center border-green-500"
       name={name}
       onChange={onChange}
     ></input>

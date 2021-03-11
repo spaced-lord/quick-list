@@ -11,8 +11,10 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="navBar container grid-cols-12 py-5">
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4 navLinks">
+
+    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
+
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -62,9 +64,10 @@ function NavTabs() {
           <Logout className=""></Logout>
         </span>
       </div>
-      <span className=" text-green-500 text-6xl subpixel-antialiased title ui-monospace">
-        Quick-List
-      </span>
+      <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
+        QuickList
+      </h1>
+
     </div>
   );
 }
