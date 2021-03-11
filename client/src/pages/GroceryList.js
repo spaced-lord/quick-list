@@ -25,7 +25,6 @@ const GroceryList = () => {
   };
 
   const delFunction = (event) => {
-    console.log(event.target.getAttribute("value"));
     API.deleteGroceryItem({
       name: event.target.getAttribute("value"),
       user: id,
