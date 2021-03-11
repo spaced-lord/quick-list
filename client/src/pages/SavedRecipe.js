@@ -13,7 +13,7 @@ const SavedRecipe = () => {
   }, []);
 
   const getRecipes = () => {
-    API.recipeList()
+    API.recipeList({ user: id })
       .then((res) => {
         const favoritesList = res.data.filter((recipe) => {
           if (recipe.favorite) {
@@ -31,7 +31,10 @@ const SavedRecipe = () => {
     const recipeID = event.target.getAttribute("value");
     API.getRecipe(recipeID)
       .then((res) => {
-        API.addToGroceryList(res.data.ingredients)
+        const groceryArray = res.data.ingredients.map((item) => {
+          return { name: item, user: id };
+        });
+        API.addToGroceryList(groceryArray)
           .then((data) => {})
           .catch((err) => console.log(err));
       })

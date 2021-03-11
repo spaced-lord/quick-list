@@ -14,7 +14,6 @@ module.exports = {
       .catch((err) => console.log(err));
   },
   deleteOne: function (req, res) {
-    console.log(req);
     db.GroceryList.deleteMany(req.query)
       .then((data) => res.json(data))
       .catch((err) => console.log(err));

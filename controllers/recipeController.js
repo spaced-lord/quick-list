@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   getAll: function (req, res) {
-    db.Recipe.find()
+    db.Recipe.find(req.query)
       .sort({ name: 1 })
       .then((data) => res.json(data))
       .catch((err) => {

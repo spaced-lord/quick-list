@@ -1,3 +1,5 @@
-import { createBrowserHistory as history } from "history";
+// import { useHistory } from "react-router-dom";
 
-export default history();
+// const history = useHistory();
+
+// export default history;

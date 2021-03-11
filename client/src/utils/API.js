@@ -11,7 +11,6 @@ export default {
   },
   //Get route for grocery list
   getGroceryList: function (user) {
-    console.log(user);
     return axios.get("/api/groceryList/all", { params: user });
   },
   //Post route for grocery list
@@ -20,7 +19,6 @@ export default {
   },
   //Delete for grocery list item
   deleteGroceryItem: function (userItem) {
-    console.log(userItem);
     return axios.delete("/api/groceryList/item", { params: userItem });
   },
   //Clear grocery list
@@ -28,8 +26,8 @@ export default {
     return axios.delete("/api/groceryList/clear/list", { params: user });
   },
   //Get route for recipe list
-  recipeList: function () {
-    return axios.get("/api/recipes/all");
+  recipeList: function (user) {
+    return axios.get("/api/recipes/all", { params: user });
   },
   //Get route for specific recipe
   getRecipe: function (recipeID) {
