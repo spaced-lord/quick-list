@@ -11,8 +11,10 @@ function NavTabs() {
   const location = useLocation();
 
   return (
+
     <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50">
       <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
+
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -20,7 +22,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
         <Link
           to="/NewRecipe"
           className={
@@ -30,7 +32,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
         <Link
           to="/SavedRecipe"
           className={
@@ -42,7 +44,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5 navLinks">
         <Link
           to="/GroceryList"
           className={
@@ -65,6 +67,7 @@ function NavTabs() {
       <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
         QuickList
       </h1>
+
     </div>
   );
 }
