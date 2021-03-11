@@ -11,7 +11,7 @@ function NavTabs() {
   const location = useLocation();
 
   return (
-    <div className="navBar container grid-cols-12 py-5">
+    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50">
       <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
         <Link
           to="/"
