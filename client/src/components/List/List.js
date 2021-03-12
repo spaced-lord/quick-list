@@ -20,7 +20,7 @@ export function ListItem({
   delFunc,
 }) {
   return (
-    <div style={{ border: "solid 1px black" }}>
+    <div style={{ border: "solid 2px #10b981" }}>
       <li value={value} onClick={onClick}>
         {name}
       </li>

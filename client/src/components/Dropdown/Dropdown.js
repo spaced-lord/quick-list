@@ -2,7 +2,7 @@ import React from "react";
 
 export const Dropdown = ({ value, defaultText, name, onChange, children }) => {
   return (
-    <select name={name} onChange={onChange} value={value}>
+    <select className="round-md" name={name} onChange={onChange} value={value}>
       <option value="default" disabled hidden>
         Choose {defaultText}
       </option>

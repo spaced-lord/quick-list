@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Login from "../../components/GoogleAuth/Login";
 import Logout from "../../components/GoogleAuth/Logout";
 import "../../styles/Nav.css";
+import LoginContext from "../../utils/LoginContext";
 
-function NavTabs() {
+function NavTabs({ login, logout }) {
+  const { id } = useContext(LoginContext);
   // We'll go into the Hooks API later, for now, we are just using some code
   // from the react-router docs (https://reacttraining.com/react-router/web/api/Hooks/uselocation)
   // This allows the component to check the route any time the user uses a link to navigate.
   const location = useLocation();
 
   return (
-    <div className="navBar">
-      <span className="nav-item ">
+    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50 ">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -20,7 +22,7 @@ function NavTabs() {
           Home
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
         <Link
           to="/NewRecipe"
           className={
@@ -30,7 +32,7 @@ function NavTabs() {
           New Recipe
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
         <Link
           to="/SavedRecipe"
           className={
@@ -42,7 +44,7 @@ function NavTabs() {
           My Recipes
         </Link>
       </span>
-      <span className="nav-item ">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-3 px-3 py-2 navLinks">
         <Link
           to="/GroceryList"
           className={
@@ -54,14 +56,18 @@ function NavTabs() {
           Grocery List
         </Link>
       </span>
-
-      <span className="LogInOUT">
-        <Login className=""></Login>
-      </span>
-      <span className="LogInOUT">
-        <Logout className=""></Logout>
-      </span>
-      <h1 className="title">The Quick-List App</h1>
+      <h1 className="title text-green-500 md:text-6xl font-bold">QuickList</h1>
+      <div className="flex justify-end -my-14 mx-5">
+        {id ? (
+          <span className="LogInOUT">
+            <Logout className="" logout={logout}></Logout>
+          </span>
+        ) : (
+          <span className="LogInOUT">
+            <Login className="" login={login}></Login>
+          </span>
+        )}
+      </div>
     </div>
   );
 }

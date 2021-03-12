@@ -1,9 +1,11 @@
-import { set } from "mongoose";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { List, ListItem } from "../components/List/List";
 import API from "../utils/API";
+import LoginContext from "../utils/LoginContext";
+import "../styles/SavedRecipes.css";
 
 const SavedRecipe = () => {
+  const { id } = useContext(LoginContext);
   const [recipeList, setRecipeList] = useState([]);
   const [favRecipeList, setFavRecipeList] = useState([]);
 
@@ -12,7 +14,7 @@ const SavedRecipe = () => {
   }, []);
 
   const getRecipes = () => {
-    API.recipeList()
+    API.recipeList({ user: id })
       .then((res) => {
         const favoritesList = res.data.filter((recipe) => {
           if (recipe.favorite) {
@@ -30,7 +32,10 @@ const SavedRecipe = () => {
     const recipeID = event.target.getAttribute("value");
     API.getRecipe(recipeID)
       .then((res) => {
-        API.addToGroceryList(res.data.ingredients)
+        const groceryArray = res.data.ingredients.map((item) => {
+          return { name: item, user: id };
+        });
+        API.addToGroceryList(groceryArray)
           .then((data) => {})
           .catch((err) => console.log(err));
       })
@@ -56,37 +61,52 @@ const SavedRecipe = () => {
   };
 
   return (
-    <div>
-      <List>
-        {favRecipeList.map((recipe) => (
-          <ListItem
-            name={recipe.name}
-            data={recipe.ingredients}
-            key={recipe._id}
-            value={recipe._id}
-            onClick={handleRecipeClick}
-            favorite={recipe.favorite}
-            needFav="true"
-            favFunc={favFunction}
-            delFunc={deleteFunction}
-          />
-        ))}
-      </List>
-      <List>
-        {recipeList.map((recipe) => (
-          <ListItem
-            name={recipe.name}
-            data={recipe.ingredients}
-            key={recipe._id}
-            value={recipe._id}
-            onClick={handleRecipeClick}
-            favorite={recipe.favorite}
-            needFav="true"
-            favFunc={favFunction}
-            delFunc={deleteFunction}
-          />
-        ))}
-      </List>
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl">
+      {id ? (
+        <>
+          <h1>Favorites</h1>
+          <List>
+            {favRecipeList.map((recipe) => (
+              <ListItem
+                name={recipe.name}
+                data={recipe.ingredients}
+                key={recipe._id}
+                value={recipe._id}
+                onClick={handleRecipeClick}
+                favorite={recipe.favorite}
+                needFav="true"
+                favFunc={favFunction}
+                delFunc={deleteFunction}
+              />
+            ))}
+          </List>
+          <h1>Complete List</h1>
+          <List>
+            {recipeList.map((recipe) => (
+              <ListItem
+                name={recipe.name}
+                data={recipe.ingredients}
+                key={recipe._id}
+                value={recipe._id}
+                onClick={handleRecipeClick}
+                favorite={recipe.favorite}
+                needFav="true"
+                favFunc={favFunction}
+                delFunc={deleteFunction}
+              />
+            ))}
+          </List>
+        </>
+      ) : (
+        <div>
+          <h1>Please login</h1>
+          <p>
+            Create titles for your favorite meals or even create a title for a
+            list for your spouse with that forget memory so they never forget
+            the kids milk again!
+          </p>
+        </div>
+      )}
     </div>
   );
 };

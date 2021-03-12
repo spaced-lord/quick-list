@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 
 //Defines object structure for collection
 const recipeSchema = new Schema({
+  user: String,
   name: String,
   ingredients: [],
   favorite: {
