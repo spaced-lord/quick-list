@@ -14,7 +14,7 @@ function NavTabs({ login, logout }) {
 
   return (
     <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50">
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-4">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2">
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -22,7 +22,7 @@ function NavTabs({ login, logout }) {
           Home
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
         <Link
           to="/NewRecipe"
           className={
@@ -32,7 +32,7 @@ function NavTabs({ login, logout }) {
           New Recipe
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-6 px-5 py-5 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
         <Link
           to="/SavedRecipe"
           className={
@@ -44,7 +44,7 @@ function NavTabs({ login, logout }) {
           My Recipes
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-6 px-5 py-5 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-3 px-3 py-2 navLinks">
         <Link
           to="/GroceryList"
           className={
@@ -56,7 +56,8 @@ function NavTabs({ login, logout }) {
           Grocery List
         </Link>
       </span>
-      <div className="flex justify-end -my-8">
+      <h1 className="title text-green-500 text-6xl">QuickList</h1>
+      <div className="flex justify-end -my-14 mx-5">
         {id ? (
           <span className="LogInOUT">
             <Logout className="" logout={logout}></Logout>
@@ -67,9 +68,6 @@ function NavTabs({ login, logout }) {
           </span>
         )}
       </div>
-      <h1 className="title text-green-500 text-6xl p-20 subpixel-antialiased">
-        QuickList
-      </h1>
     </div>
   );
 }
