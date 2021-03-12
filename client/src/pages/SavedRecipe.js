@@ -98,7 +98,7 @@ const SavedRecipe = () => {
           </List>
         </>
       ) : (
-        <h1>Please login to see recipes...</h1>
+        <h1>Please login</h1>
       )}
     </div>
   );
