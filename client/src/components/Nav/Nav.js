@@ -13,7 +13,7 @@ function NavTabs({ login, logout }) {
   const location = useLocation();
 
   return (
-    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50">
+    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50 ">
       <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2">
         <Link
           to="/"
@@ -56,7 +56,7 @@ function NavTabs({ login, logout }) {
           Grocery List
         </Link>
       </span>
-      <h1 className="title text-green-500 text-6xl">QuickList</h1>
+      <h1 className="title text-green-500 md:text-6xl font-bold">QuickList</h1>
       <div className="flex justify-end -my-14 mx-5">
         {id ? (
           <span className="LogInOUT">

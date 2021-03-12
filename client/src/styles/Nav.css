@@ -18,9 +18,9 @@
 .title {
   text-align: center;
   margin-top: -30px;
-  font-size: 48px;
+  /* font-size: 48px; */
   font-weight: 500;
-  font-family: cursive;
+  /* font-family: cursive; */
 }
 .navLinks {
   margin-left: -20px;
