@@ -44,7 +44,7 @@ const GroceryList = () => {
   };
 
   return (
-    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center">
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
       {id ? (
         <>
           <List>
