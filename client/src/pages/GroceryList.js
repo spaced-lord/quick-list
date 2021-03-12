@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { List, ListItem } from "../components/List/List";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
-<<<<<<< Updated upstream
-=======
 import { Slide } from "react-awesome-reveal";
->>>>>>> Stashed changes
 
 const GroceryList = () => {
   const [groceryList, setGroceryList] = useState([]);
@@ -45,14 +42,9 @@ const GroceryList = () => {
 
   return (
     <div>
-<<<<<<< Updated upstream
-      <List>
-        {groceryList.map((item, index) => (
-=======
       <Slide triggerOnce>
         <List>
              {groceryList.map((item, index) => (
->>>>>>> Stashed changes
           <ListItem
             name={item}
             value={item}
@@ -60,12 +52,8 @@ const GroceryList = () => {
             delFunc={delFunction}
           />
         ))}
-<<<<<<< Updated upstream
-      </List>
-=======
         </List>
       </Slide>
->>>>>>> Stashed changes
       <Button name="deleteAll" onClick={clearList} text="Clear List" />
     </div>
   );
