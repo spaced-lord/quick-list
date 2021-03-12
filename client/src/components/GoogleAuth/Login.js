@@ -14,18 +14,12 @@ function Login({ login }) {
     console.log("Login Success: currentUser:", res.profileObj);
     login(res.profileObj.googleId);
     history.push("/");
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
 
     refreshTokenSetup(res);
   };
 
   const onFailure = (res) => {
     console.log("Login failed: res:", res);
-    alert(
-      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
-    );
   };
 
   return (
