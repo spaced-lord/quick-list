@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { List, ListItem } from "../components/List/List";
 import API from "../utils/API";
 import LoginContext from "../utils/LoginContext";
+import "../styles/SavedRecipes.css";
 
 const SavedRecipe = () => {
   const { id } = useContext(LoginContext);
@@ -60,7 +61,7 @@ const SavedRecipe = () => {
   };
 
   return (
-    <div>
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center table-auto border-seperate">
       {id ? (
         <>
           <h1>Favorites</h1>

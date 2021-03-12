@@ -1,14 +1,13 @@
-body {
-  background-color: green;
-}
 
-/* Temporarily changed background color to provide enough contrast to see white elements */
 
 .recipeform {
-  margin-top: 200px;
-  margin-left: 40%;
+  margin-left: 20%;
 }
 p {
   font-size: 22px;
   margin-top: 15%;
+}
+
+.submit {
+  margin-left: 5px;
 }
