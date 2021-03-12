@@ -200,7 +200,7 @@ const NewRecipe = () => {
 
   //Return for the page
   return (
-    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center">
+    <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center ">
       {id ? (
         <div className="recipeform">
           <form onSubmit={submitFunction}>
