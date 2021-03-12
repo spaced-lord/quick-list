@@ -2,6 +2,7 @@ import { set } from "mongoose";
 import React, { useState, useEffect } from "react";
 import { List, ListItem } from "../components/List/List";
 import API from "../utils/API";
+import "../styles/SavedRecipes.css";
 
 const SavedRecipe = () => {
   const [recipeList, setRecipeList] = useState([]);
@@ -56,37 +57,39 @@ const SavedRecipe = () => {
   };
 
   return (
-    <div>
-      <List>
-        {favRecipeList.map((recipe) => (
-          <ListItem
-            name={recipe.name}
-            data={recipe.ingredients}
-            key={recipe._id}
-            value={recipe._id}
-            onClick={handleRecipeClick}
-            favorite={recipe.favorite}
-            needFav="true"
-            favFunc={favFunction}
-            delFunc={deleteFunction}
-          />
-        ))}
-      </List>
-      <List>
-        {recipeList.map((recipe) => (
-          <ListItem
-            name={recipe.name}
-            data={recipe.ingredients}
-            key={recipe._id}
-            value={recipe._id}
-            onClick={handleRecipeClick}
-            favorite={recipe.favorite}
-            needFav="true"
-            favFunc={favFunction}
-            delFunc={deleteFunction}
-          />
-        ))}
-      </List>
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center table-auto border-seperate">
+      <div>
+        <List>
+          {favRecipeList.map((recipe) => (
+            <ListItem
+              name={recipe.name}
+              data={recipe.ingredients}
+              key={recipe._id}
+              value={recipe._id}
+              onClick={handleRecipeClick}
+              favorite={recipe.favorite}
+              needFav="true"
+              favFunc={favFunction}
+              delFunc={deleteFunction}
+            />
+          ))}
+        </List>
+        <List>
+          {recipeList.map((recipe) => (
+            <ListItem
+              name={recipe.name}
+              data={recipe.ingredients}
+              key={recipe._id}
+              value={recipe._id}
+              onClick={handleRecipeClick}
+              favorite={recipe.favorite}
+              needFav="true"
+              favFunc={favFunction}
+              delFunc={deleteFunction}
+            />
+          ))}
+        </List>
+      </div>
     </div>
   );
 };

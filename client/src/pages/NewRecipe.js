@@ -198,81 +198,83 @@ const NewRecipe = () => {
 
   //Return for the page
   return (
-    <div className="recipeform">
-      <form onSubmit={submitFunction}>
-        {recipeState.name ? (
-          <div>
-            <p>{recipeState.name}</p>
-            <Dropdown
-              name="type"
-              onChange={handleSelectChange}
-              defaultText="Type"
-              value={dropdownState.first}
-            >
-              {typeSelectArray.map((item, index) => (
-                <DropdownOptions value={item} key={index} />
-              ))}
-            </Dropdown>
-          </div>
-        ) : (
-          <InputBar name="recipeName" onChange={handleInputChange} />
-        )}
-        {ingredient.type && (
-          <div>
-            <Dropdown
-              name="ingredientName"
-              onChange={handleSelectChange}
-              defaultText="Ingredient"
-              value={dropdownState.second}
-            >
-              {ingredSelectArray.map((item, index) => (
-                <DropdownOptions value={item} key={index} />
-              ))}
-            </Dropdown>
-          </div>
-        )}
-        {pageState.ingredientName === "Placeholder" && (
-          <InputBar name="ingredientName" onChange={handleInputChange} />
-        )}
-        {recipeState.name ? (
-          <div>
-            <Button
-              name="addIngredient"
-              onClick={submitFunction}
-              text="Add Ingredient"
-            />
-            <Button
-              name="addNewRecipe"
-              onClick={submitFunction}
-              text="Add New Recipe"
-              disabled={
-                ingredientsArray.length < 1 ||
-                Object.keys(ingredient).length > 0
-              }
-            />
-            <Button
-              name="completeToGroceryList"
-              onClick={submitFunction}
-              text="Save & Add To List"
-              disabled={
-                ingredientsArray.length < 1 ||
-                Object.keys(ingredient).length > 0
-              }
-            />
-          </div>
-        ) : (
-          <div>
-            <Button
-              name="recipeName"
-              onClick={submitFunction}
-              text="Submit Recipe Name"
-            />
-          </div>
-        )}
-      </form>
-      {ingredientsArray.map((item, index) => (
-        <p key={index}>{item}</p>
-      ))}
+    <div className="bg-green-300 m-40 py-8 px-8 max-w-sm mx-auto rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+      <div className="recipeform">
+        <form onSubmit={submitFunction}>
+          {recipeState.name ? (
+            <div>
+              <p>{recipeState.name}</p>
+              <Dropdown
+                name="type"
+                onChange={handleSelectChange}
+                defaultText="Type"
+                value={dropdownState.first}
+              >
+                {typeSelectArray.map((item, index) => (
+                  <DropdownOptions value={item} key={index} />
+                ))}
+              </Dropdown>
+            </div>
+          ) : (
+            <InputBar name="recipeName" onChange={handleInputChange} />
+          )}
+          {ingredient.type && (
+            <div>
+              <Dropdown
+                name="ingredientName"
+                onChange={handleSelectChange}
+                defaultText="Ingredient"
+                value={dropdownState.second}
+              >
+                {ingredSelectArray.map((item, index) => (
+                  <DropdownOptions value={item} key={index} />
+                ))}
+              </Dropdown>
+            </div>
+          )}
+          {pageState.ingredientName === "Placeholder" && (
+            <InputBar name="ingredientName" onChange={handleInputChange} />
+          )}
+          {recipeState.name ? (
+            <div>
+              <Button
+                name="addIngredient"
+                onClick={submitFunction}
+                text="Add Ingredient"
+              />
+              <Button
+                name="addNewRecipe"
+                onClick={submitFunction}
+                text="Add New Recipe"
+                disabled={
+                  ingredientsArray.length < 1 ||
+                  Object.keys(ingredient).length > 0
+                }
+              />
+              <Button
+                name="completeToGroceryList"
+                onClick={submitFunction}
+                text="Save & Add To List"
+                disabled={
+                  ingredientsArray.length < 1 ||
+                  Object.keys(ingredient).length > 0
+                }
+              />
+            </div>
+          ) : (
+            <div>
+              <Button
+                name="recipeName"
+                onClick={submitFunction}
+                text="Submit Recipe Name"
+              />
+            </div>
+          )}
+        </form>
+        {ingredientsArray.map((item, index) => (
+          <p key={index}>{item}</p>
+        ))}
+      </div>
     </div>
   );
 };

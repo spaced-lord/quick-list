@@ -2,7 +2,7 @@
   float: right;
   clear: both;
   display: inline;
-  margin-right: 25px;
+  margin-right: 2px;
 }
 .nav-item {
   margin-right: 10px;
@@ -12,7 +12,16 @@
 .navBar {
   background-color: white;
   height: 5rem;
+  width: 150%;
+  margin-right: 0px;
 }
 .title {
-  text-align: center;
+  margin-left: 50%;
+  margin-top: -20px;
+  font-size: 48px;
+  font-weight: 500;
+  font-family: cursive;
+}
+.navLinks {
+  margin-left: -20px;
 }
