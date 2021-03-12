@@ -60,19 +60,6 @@ const NewRecipe = () => {
             ingredient.ingredientName,
           ]);
         }
-        //Pushes new ingredient to database
-        if (ingredient.new) {
-          API.newIngredient({
-            type: ingredient.type,
-            name: ingredient.ingredientName,
-          })
-            .then((res) => {})
-            .catch((err) => {
-              if (err) {
-                console.log(err);
-              }
-            });
-        }
         //Reset PageState object
         setIngredient({});
         setPageState({});
@@ -275,7 +262,10 @@ const NewRecipe = () => {
             )}
           </form>
           {ingredientsArray.map((item, index) => (
-            <p key={index}>{item}</p>
+            <div>
+              <h3 key={index}>{item}</h3>
+              <h4>X</h4>
+            </div>
           ))}
         </div>
       ) : (
