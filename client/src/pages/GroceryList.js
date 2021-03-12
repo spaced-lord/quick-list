@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { List, ListItem } from "../components/List/List";
+import { Slide, Fade } from "react-awesome-reveal";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
 import LoginContext from "../utils/LoginContext";
@@ -43,19 +44,25 @@ const GroceryList = () => {
       .catch((err) => console.log(err));
   };
 
+  let delay = 0;
+
   return (
     <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl">
       {id ? (
         <>
           <List>
-            {groceryList.map((item, index) => (
-              <ListItem
-                name={item}
-                value={item}
-                key={index}
-                delFunc={delFunction}
-              />
-            ))}
+            <Fade triggerOnce direction="down" cascade duration={300}>
+              {groceryList.map((item, index) => {
+                return (
+                  <ListItem
+                    name={item}
+                    value={item}
+                    key={index}
+                    delFunc={delFunction}
+                  />
+                );
+              })}
+            </Fade>
           </List>
           <Button name="deleteAll" onClick={clearList} text="Clear List" />
         </>
