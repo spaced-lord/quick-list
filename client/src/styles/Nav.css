@@ -16,11 +16,11 @@
   margin-right: 0px;
 }
 .title {
-  margin-left: 50%;
-  margin-top: -20px;
-  font-size: 48px;
+  text-align: center;
+  margin-top: -30px;
+  /* font-size: 48px; */
   font-weight: 500;
-  font-family: cursive;
+  /* font-family: cursive; */
 }
 .navLinks {
   margin-left: -20px;
