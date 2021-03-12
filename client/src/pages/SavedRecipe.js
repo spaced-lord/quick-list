@@ -61,7 +61,7 @@ const SavedRecipe = () => {
   };
 
   return (
-    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center table-auto border-seperate rounded-xl sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl">
       {id ? (
         <>
           <h1>Favorites</h1>
