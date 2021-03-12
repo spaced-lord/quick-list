@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import NavTabs from "./components/Nav/Nav";
 import NewRecipe from "./pages/NewRecipe";
+<<<<<<< Updated upstream
 import HomePage from "./pages/Home";
 import GroceryList from "./pages/GroceryList";
 import SavedRecipe from "./pages/SavedRecipe";
@@ -20,6 +21,36 @@ import history from "./utils/history";
 
 function App() {
   return (
+=======
+<<<<<<< HEAD
+import Google from "./components/Glogin"
+
+function App() {
+  return (
+    <div className="App">
+      <NewRecipe />
+      <Google/>
+    </div>
+=======
+import HomePage from "./pages/Home";
+import GroceryList from "./pages/GroceryList";
+import SavedRecipe from "./pages/SavedRecipe";
+import history from "./utils/history";
+import "tailwindcss/tailwind.css";
+
+// function App() {
+//   return (
+//     <div className="App">
+//       {/* <NewRecipe /> */}
+//       <HomePage />
+//       <Signup />
+//     </div>
+//   );
+// }
+
+function App() {
+  return (
+>>>>>>> Stashed changes
     <Router history={history}>
       <div>
         <NavTabs />
@@ -29,6 +60,10 @@ function App() {
         <Route path="/GroceryList" component={GroceryList} />
       </div>
     </Router>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 02baf642e705d7e6be5944000ab36c012feb7da2
+>>>>>>> Stashed changes
   );
 }
 
