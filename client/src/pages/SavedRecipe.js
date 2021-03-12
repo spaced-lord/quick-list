@@ -98,7 +98,14 @@ const SavedRecipe = () => {
           </List>
         </>
       ) : (
-        <h1>Please login</h1>
+        <div>
+          <h1>Please login</h1>
+          <p>
+            Create titles for your favorite meals or even create a title for a
+            list for your spouse with that forget memory so they never forget
+            the kids milk again!
+          </p>
+        </div>
       )}
     </div>
   );
