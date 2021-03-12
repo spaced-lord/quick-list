@@ -60,7 +60,13 @@ const GroceryList = () => {
           <Button name="deleteAll" onClick={clearList} text="Clear List" />
         </>
       ) : (
-        <h1>Please login</h1>
+        <div>
+          <h1>Please Login </h1>
+          <p>
+            Login simply using your gmail account. Once you store your favorite
+            recipes the grocery list is literally at your fingertip!
+          </p>
+        </div>
       )}
     </div>
   );

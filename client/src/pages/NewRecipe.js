@@ -200,7 +200,7 @@ const NewRecipe = () => {
 
   //Return for the page
   return (
-    <div className="bg-green-300 m-40 py-8 px-8 max-w-sm mx-auto rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center">
       {id ? (
         <div className="recipeform">
           <form onSubmit={submitFunction}>
@@ -279,7 +279,15 @@ const NewRecipe = () => {
           ))}
         </div>
       ) : (
-        <h1>Please login to see more...</h1>
+        <div>
+          <h1>Please login</h1>
+          <p>
+            Take your favorite meals and store the individual ingredients Or
+            even enter the items for your weekly routine shopping list. Your
+            grocery list will ensure you never forgot an ingrediant for dinner
+            again!
+          </p>
+        </div>
       )}
     </div>
   );
