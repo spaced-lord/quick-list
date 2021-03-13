@@ -1,5 +1,5 @@
 //Import React, useState, and necessary components.
-import React, { useState, useReducer, useContext, useEffect } from "react";
+import React, { useState, useReducer, useContext } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import IngredientList from "../components/IngredientList/IngredientList";
 import InputBar from "../components/Input/Input";
@@ -8,6 +8,10 @@ import API from "../utils/API";
 import { useHistory } from "react-router-dom";
 import "../styles/NewRecipe.css";
 import LoginContext from "../utils/LoginContext";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 //Create page component
 const NewRecipe = () => {
@@ -67,6 +71,7 @@ const NewRecipe = () => {
         setDropdownState({ first: "default", second: "default" });
         break;
       case "addNewRecipe":
+        createNotification("success");
         ////To slow to work(Ask question)
         setIngredientsArray((previousState) => [
           ...previousState,
@@ -199,108 +204,134 @@ const NewRecipe = () => {
     );
   };
 
+  const createNotification = (type) => {
+    switch (type) {
+      case "success":
+        return NotificationManager.warning(
+          "Recipe Successfully Added",
+          null,
+          1000
+        );
+    }
+  };
+
   //Return for the page
   return (
-    
-    <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl test">
-      <button className="animate-bounce">The fun begins here!<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 17l-4 4m0 0l-4-4m4 4V3" />
-</svg></button>
-      {id ? (
-        <div>
-          <form onSubmit={submitFunction}>
-            {recipeState.name ? (
-              <div>
-                <p>{recipeState.name}</p>
-                <Dropdown
-                  name="type"
-                  onChange={handleSelectChange}
-                  defaultText="Type"
-                  value={dropdownState.first}
-                >
-                  {typeSelectArray.map((item, index) => (
-                    <DropdownOptions value={item} key={index} />
-                  ))}
-                </Dropdown>
-              </div>
-            ) : (
-              <InputBar name="recipeName" onChange={handleInputChange} />
-            )}
-            {ingredient.type && (
-              <div>
-                <Dropdown
-                  name="ingredientName"
-                  onChange={handleSelectChange}
-                  defaultText="Ingredient"
-                  value={dropdownState.second}
-                >
-                  {ingredSelectArray.map((item, index) => (
-                    <DropdownOptions value={item} key={index} />
-                  ))}
-                </Dropdown>
-              </div>
-            )}
-            {pageState.ingredientName === "Placeholder" && (
-              <InputBar name="ingredientName" onChange={handleInputChange} />
-            )}
-            {recipeState.name ? (
-              <div>
-                <Button
-                  name="addIngredient"
-                  onClick={submitFunction}
-                  text="Add Ingredient"
-                />
-                <Button
-                  name="addNewRecipe"
-                  onClick={submitFunction}
-                  text="Add New Recipe"
-                  disabled={
-                    ingredientsArray.length < 1 ||
-                    Object.keys(ingredient).length > 0
-                  }
-                />
-                <Button
-                  name="completeToGroceryList"
-                  onClick={submitFunction}
-                  text="Save & Add To List"
-                  disabled={
-                    ingredientsArray.length < 1 ||
-                    Object.keys(ingredient).length > 0
-                  }
-                />
-              </div>
-            ) : (
-              <div>
-                <Button
-                  name="recipeName"
-                  onClick={submitFunction}
-                  text="Submit Recipe Name"
-                />
-              </div>
-            )}
-          </form>
+    <div>
+      <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
+        <button className="animate-bounce">
+          The fun begins here!
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M16 17l-4 4m0 0l-4-4m4 4V3"
+            />
+          </svg>
+        </button>
+        {id ? (
           <div>
-            {ingredientsArray.map((item, index) => (
-              <IngredientList
-                key={index}
-                name={item}
-                value={index}
-                onClick={deleteItem}
-              />
-            ))}
+            <form onSubmit={submitFunction}>
+              {recipeState.name ? (
+                <div>
+                  <p>{recipeState.name}</p>
+                  <Dropdown
+                    name="type"
+                    onChange={handleSelectChange}
+                    defaultText="Type"
+                    value={dropdownState.first}
+                  >
+                    {typeSelectArray.map((item, index) => (
+                      <DropdownOptions value={item} key={index} />
+                    ))}
+                  </Dropdown>
+                </div>
+              ) : (
+                <InputBar name="recipeName" onChange={handleInputChange} />
+              )}
+              {ingredient.type && (
+                <div>
+                  <Dropdown
+                    name="ingredientName"
+                    onChange={handleSelectChange}
+                    defaultText="Ingredient"
+                    value={dropdownState.second}
+                  >
+                    {ingredSelectArray.map((item, index) => (
+                      <DropdownOptions value={item} key={index} />
+                    ))}
+                  </Dropdown>
+                </div>
+              )}
+              {pageState.ingredientName === "Placeholder" && (
+                <InputBar name="ingredientName" onChange={handleInputChange} />
+              )}
+              {recipeState.name ? (
+                <div>
+                  <Button
+                    name="addIngredient"
+                    onClick={submitFunction}
+                    text="Add Ingredient"
+                  />
+                  <Button
+                    name="addNewRecipe"
+                    onClick={submitFunction}
+                    text="Add New Recipe"
+                    disabled={
+                      ingredientsArray.length < 1 ||
+                      Object.keys(ingredient).length > 0
+                    }
+                  />
+                  <Button
+                    name="completeToGroceryList"
+                    onClick={submitFunction}
+                    text="Save & Add To List"
+                    disabled={
+                      ingredientsArray.length < 1 ||
+                      Object.keys(ingredient).length > 0
+                    }
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Button
+                    name="recipeName"
+                    onClick={submitFunction}
+                    text="Submit Recipe Name"
+                  />
+                </div>
+              )}
+            </form>
+            <div>
+              {ingredientsArray.map((item, index) => (
+                <IngredientList
+                  key={index}
+                  name={item}
+                  value={index}
+                  onClick={deleteItem}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <h1>Log in using Gmail credentials</h1>
-          <p>
-            Take your favorite meals and store the individual ingredients Or
-            even enter the items for your weekly routine shopping list. Your
-            grocery list will ensure you never forgot an ingrediant for dinner
-            again!
-          </p>
-        </div>
-      )}
+        ) : (
+          <div>
+            <h1>Log in using Gmail credentials</h1>
+            <p>
+              Take your favorite meals and store the individual ingredients Or
+              even enter the items for your weekly routine shopping list. Your
+              grocery list will ensure you never forgot an ingrediant for dinner
+              again!
+            </p>
+          </div>
+        )}
+        <NotificationContainer />
+      </div>
     </div>
   );
 };
