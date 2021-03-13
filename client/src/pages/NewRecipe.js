@@ -1,6 +1,7 @@
 //Import React, useState, and necessary components.
-import React, { useState, useReducer, useContext } from "react";
+import React, { useState, useReducer, useContext, useEffect } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
+import IngredientList from "../components/IngredientList/IngredientList";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
@@ -59,19 +60,6 @@ const NewRecipe = () => {
             ...previousState,
             ingredient.ingredientName,
           ]);
-        }
-        //Pushes new ingredient to database
-        if (ingredient.new) {
-          API.newIngredient({
-            type: ingredient.type,
-            name: ingredient.ingredientName,
-          })
-            .then((res) => {})
-            .catch((err) => {
-              if (err) {
-                console.log(err);
-              }
-            });
         }
         //Reset PageState object
         setIngredient({});
@@ -198,9 +186,26 @@ const NewRecipe = () => {
     }
   };
 
+  const deleteItem = (event) => {
+    ingredientsArray.splice(
+      event.target.parentElement.getAttribute("value"),
+      1
+    );
+    const newIngredientsArray = ingredientsArray;
+    setIngredientsArray((previousState) =>
+      newIngredientsArray.map((item) => {
+        return item;
+      })
+    );
+  };
+
   //Return for the page
   return (
+    
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl test">
+      <button className="animate-bounce">The fun begins here!<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 17l-4 4m0 0l-4-4m4 4V3" />
+</svg></button>
       {id ? (
         <div>
           <form onSubmit={submitFunction}>
@@ -274,9 +279,16 @@ const NewRecipe = () => {
               </div>
             )}
           </form>
-          {ingredientsArray.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          <div>
+            {ingredientsArray.map((item, index) => (
+              <IngredientList
+                key={index}
+                name={item}
+                value={index}
+                onClick={deleteItem}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div>

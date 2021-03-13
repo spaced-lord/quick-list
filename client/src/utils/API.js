@@ -45,10 +45,4 @@ export default {
   deleteRecipe: function (recipeID) {
     return axios.delete("/api/recipes/" + recipeID);
   },
-  //Post route for ingredient
-  newIngredient: function (ingredient) {
-    return axios.post("/api/ingredient/new", ingredient);
-  },
-
-  //Post for user login?
 };

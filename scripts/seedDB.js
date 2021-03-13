@@ -170,58 +170,6 @@ const ingredientType = [
   { type: "Other" },
 ];
 
-const RecipeSeedData = [
-  {
-    ingredients: [
-      "Flour",
-      "Sugar",
-      "Baking Powder",
-      "Salt",
-      "Milk",
-      "Butter",
-      "Eggs",
-      "Vegetable Oil",
-      "Syrup",
-    ],
-    favorite: true,
-    name: "Pancakes",
-  },
-  {
-    ingredients: [
-      "Fettuccini Noodles",
-      "Raw Shrimp",
-      "Olive Oil",
-      "Onion",
-      "Butter",
-      "Garlic Clove",
-      "White Wine",
-      "Whipping Cream",
-      "Parmesan Cheese",
-      "Salt",
-      "Black Pepper",
-      "Parsley",
-      "Paprika",
-      "Salt",
-    ],
-    favorite: false,
-    name: "Creamy Shrimp Pasta",
-  },
-  {
-    ingredients: [
-      "Salmon",
-      "Salt",
-      "Cayenne Pepper",
-      "Honey",
-      "Garlic Clove",
-      "Lemon Juice",
-      "Lemon",
-      "Parsley",
-    ],
-    favorite: false,
-    name: "Garlic Salmon",
-  },
-];
-
 db.IngredientType.deleteMany({})
   .then(() => db.IngredientType.collection.insertMany(ingredientType))
   .then(() => process.exit(0))
@@ -232,14 +180,6 @@ db.IngredientType.deleteMany({})
 
 db.Ingredient.deleteMany({})
   .then(() => db.Ingredient.collection.insertMany(ingredientSeedData))
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.log(err);
-    process.exit(1);
-  });
-
-db.Recipe.deleteMany({})
-  .then(() => db.Recipe.collection.insertMany(RecipeSeedData))
   .then(() => process.exit(0))
   .catch((err) => {
     console.log(err);
