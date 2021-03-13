@@ -13,8 +13,10 @@ function NavTabs({ login, logout }) {
   const location = useLocation();
 
   return (
-    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50 ">
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2">
+
+    <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50 rounded-xl">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 animate-pulse">
+
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -22,7 +24,7 @@ function NavTabs({ login, logout }) {
           Home
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks animate-pulse">
         <Link
           to="/NewRecipe"
           className={
@@ -32,7 +34,7 @@ function NavTabs({ login, logout }) {
           New Recipe
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks animate-pulse">
         <Link
           to="/SavedRecipe"
           className={
@@ -44,7 +46,7 @@ function NavTabs({ login, logout }) {
           My Recipes
         </Link>
       </span>
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-3 px-3 py-2 navLinks">
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl  mx-3 px-3 py-2 navLinks animate-pulse">
         <Link
           to="/GroceryList"
           className={
