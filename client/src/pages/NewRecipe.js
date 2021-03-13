@@ -288,7 +288,7 @@ const NewRecipe = () => {
         </div>
       ) : (
         <div>
-          <h1>Please login</h1>
+          <h1>Log in using Gmail credentials</h1>
           <p>
             Take your favorite meals and store the individual ingredients Or
             even enter the items for your weekly routine shopping list. Your
