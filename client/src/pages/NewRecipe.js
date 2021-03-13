@@ -201,7 +201,11 @@ const NewRecipe = () => {
 
   //Return for the page
   return (
+    
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl test">
+      <button className="animate-bounce">The fun begins here!<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 17l-4 4m0 0l-4-4m4 4V3" />
+</svg></button>
       {id ? (
         <div>
           <form onSubmit={submitFunction}>
