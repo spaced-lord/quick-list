@@ -44,8 +44,6 @@ const GroceryList = () => {
       .catch((err) => console.log(err));
   };
 
-  let delay = 0;
-
   return (
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
       {id ? (
