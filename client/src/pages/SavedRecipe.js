@@ -3,6 +3,10 @@ import { List, ListItem } from "../components/List/List";
 import API from "../utils/API";
 import LoginContext from "../utils/LoginContext";
 import "../styles/SavedRecipes.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
 
 const SavedRecipe = () => {
   const { id } = useContext(LoginContext);
@@ -29,6 +33,7 @@ const SavedRecipe = () => {
   };
 
   const handleRecipeClick = (event) => {
+    createNotification("success");
     const recipeID = event.target.getAttribute("value");
     API.getRecipe(recipeID)
       .then((res) => {
@@ -60,10 +65,18 @@ const SavedRecipe = () => {
       .catch((err) => console.log(err));
   };
 
+  const createNotification = (type) => {
+    switch (type) {
+      case "success":
+        return NotificationManager.success("Added To Grocery List", null, 100);
+    }
+  };
+
   return (
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
       {id ? (
         <>
+          <NotificationContainer class="notification" />
           <h1>Favorites</h1>
           <List>
             {favRecipeList.map((recipe) => (

@@ -207,7 +207,7 @@ const NewRecipe = () => {
   const createNotification = (type) => {
     switch (type) {
       case "success":
-        return NotificationManager.warning(
+        return NotificationManager.success(
           "Recipe Successfully Added",
           null,
           1000
