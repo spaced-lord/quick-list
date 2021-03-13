@@ -1,27 +1,17 @@
-.homeBackground {
-  background-image: url("https://images.unsplash.com/photo-1604145187954-249d15732a10?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1504&q=80");
-  background-repeat: no-repeat;
-}
-
 .article {
-  /* margin-top: 0%; */
   color: black;
   margin-top: -5%;
-  /* margin-top: 0%;
-  margin-right: 60%;
-
-  margin-bottom: -5%; */
 }
 .aside {
-  top: 50px;
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 800;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 5%;
 }
 p {
   font-size: 22px;
   margin-top: 1%;
-  margin-bottom: 10%;
+
   font-weight: 500;
 }
 .sectionTop {

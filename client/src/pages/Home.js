@@ -11,13 +11,7 @@ function Home(props) {
     <div className="article  ">
       <br className=""></br>
       <h1 className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
-        <h2 className="aside sectionTop">
-          Enter ingredients to your favorite meals!{" "}
-        </h2>
-        <h2 className="aside ">Have them stored to select at anytime! </h2>
-        <h2 className="aside sectionBottom">
-          Have a Grocery List in just a few Clicks!{" "}
-        </h2>
+        <h2 className="aside sectionTop">Groceries for the changing world! </h2>
 
         <p>
           Quick-list wants to make your life super easy and as stress free as
