@@ -6,7 +6,6 @@ import NewRecipe from "./pages/NewRecipe";
 import HomePage from "./pages/Home";
 import GroceryList from "./pages/GroceryList";
 import SavedRecipe from "./pages/SavedRecipe";
-import history from "./utils/history";
 import LoginContext from "./utils/LoginContext";
 
 function App() {
@@ -24,7 +23,7 @@ function App() {
 
   return (
     <LoginContext.Provider value={userLoginState}>
-      <Router history={history}>
+      <Router>
         <div>
           <NavTabs login={loginFunction} logout={logoutFunction} />
           <Route exact path="/" component={HomePage} />
