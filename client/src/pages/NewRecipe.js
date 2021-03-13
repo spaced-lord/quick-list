@@ -1,6 +1,7 @@
 //Import React, useState, and necessary components.
-import React, { useState, useReducer, useContext } from "react";
+import React, { useState, useReducer, useContext, useEffect } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
+import IngredientList from "../components/IngredientList/IngredientList";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
@@ -185,6 +186,19 @@ const NewRecipe = () => {
     }
   };
 
+  const deleteItem = (event) => {
+    ingredientsArray.splice(
+      event.target.parentElement.getAttribute("value"),
+      1
+    );
+    const newIngredientsArray = ingredientsArray;
+    setIngredientsArray((previousState) =>
+      newIngredientsArray.map((item) => {
+        return item;
+      })
+    );
+  };
+
   //Return for the page
   return (
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl test">
@@ -261,12 +275,16 @@ const NewRecipe = () => {
               </div>
             )}
           </form>
-          {ingredientsArray.map((item, index) => (
-            <div>
-              <h3 key={index}>{item}</h3>
-              <h4>X</h4>
-            </div>
-          ))}
+          <div>
+            {ingredientsArray.map((item, index) => (
+              <IngredientList
+                key={index}
+                name={item}
+                value={index}
+                onClick={deleteItem}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div>
