@@ -61,7 +61,7 @@ const SavedRecipe = () => {
   };
 
   return (
-    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl">
+    <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
       {id ? (
         <>
           <h1>Favorites</h1>
@@ -99,7 +99,7 @@ const SavedRecipe = () => {
         </>
       ) : (
         <div>
-          <h1>Please login</h1>
+          <h1>Log in using Gmail credentials</h1>
           <p>
             Create titles for your favorite meals or even create a title for a
             list for your spouse with that forget memory so they never forget

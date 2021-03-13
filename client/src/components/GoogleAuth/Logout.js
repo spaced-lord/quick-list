@@ -11,7 +11,6 @@ function Logout({ logout }) {
     history.push("/");
     console.log("Logout made successfully");
     logout();
-    alert("Logout made successfully ✌");
   };
 
   return (
