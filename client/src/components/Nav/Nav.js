@@ -56,7 +56,7 @@ function NavTabs({ login, logout }) {
           Grocery List
         </Link>
       </span>
-      <h1 className="title text-green-500 md:text-6xl font-bold animate-pulse">QuickList</h1>
+      <h1 className="title text-green-500 md:text-6xl font-bold">QuickList</h1>
       <div className="flex justify-end -my-14 mx-5">
         {id ? (
           <span className="LogInOUT">
