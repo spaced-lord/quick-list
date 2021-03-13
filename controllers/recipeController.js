@@ -12,10 +12,8 @@ module.exports = {
       });
   },
   createNew: function (req, res) {
-    console.log(req.body);
     db.Recipe.create(req.body)
       .then((data) => {
-        console.log(data);
         res.json(data);
       })
       .catch((err) => {

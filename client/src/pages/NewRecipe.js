@@ -1,6 +1,7 @@
 //Import React, useState, and necessary components.
-import React, { useState, useReducer, useContext } from "react";
+import React, { useState, useReducer, useContext, useEffect } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
+import IngredientList from "../components/IngredientList/IngredientList";
 import InputBar from "../components/Input/Input";
 import Button from "../components/Button/Button";
 import API from "../utils/API";
@@ -59,19 +60,6 @@ const NewRecipe = () => {
             ...previousState,
             ingredient.ingredientName,
           ]);
-        }
-        //Pushes new ingredient to database
-        if (ingredient.new) {
-          API.newIngredient({
-            type: ingredient.type,
-            name: ingredient.ingredientName,
-          })
-            .then((res) => {})
-            .catch((err) => {
-              if (err) {
-                console.log(err);
-              }
-            });
         }
         //Reset PageState object
         setIngredient({});
@@ -198,6 +186,19 @@ const NewRecipe = () => {
     }
   };
 
+  const deleteItem = (event) => {
+    ingredientsArray.splice(
+      event.target.parentElement.getAttribute("value"),
+      1
+    );
+    const newIngredientsArray = ingredientsArray;
+    setIngredientsArray((previousState) =>
+      newIngredientsArray.map((item) => {
+        return item;
+      })
+    );
+  };
+
   //Return for the page
   return (
     
@@ -278,9 +279,16 @@ const NewRecipe = () => {
               </div>
             )}
           </form>
-          {ingredientsArray.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
+          <div>
+            {ingredientsArray.map((item, index) => (
+              <IngredientList
+                key={index}
+                name={item}
+                value={index}
+                onClick={deleteItem}
+              />
+            ))}
+          </div>
         </div>
       ) : (
         <div>
