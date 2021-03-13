@@ -47,7 +47,7 @@ const GroceryList = () => {
   let delay = 0;
 
   return (
-    <div className="py-8 px-8 m-40 bg-green-300 text-white font-bold text-center rounded-xl">
+    <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
       {id ? (
         <>
           <List>
@@ -68,7 +68,7 @@ const GroceryList = () => {
         </>
       ) : (
         <div>
-          <h1>Please Login </h1>
+          <h1>Log in using Gmail credentials </h1>
           <p>
             Login simply using your gmail account. Once you store your favorite
             recipes the grocery list is literally at your fingertip!
