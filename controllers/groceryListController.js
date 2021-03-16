@@ -1,5 +1,6 @@
 const db = require("../models");
 
+//Methods for database calls
 module.exports = {
   addToList: function (req, res) {
     db.GroceryList.collection
