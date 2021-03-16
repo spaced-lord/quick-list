@@ -1,5 +1,6 @@
 import React from "react";
 
+//List component for ingredients on new recipe page
 const IngredientList = ({ value, name, onClick }) => {
   return (
     <div value={value}>

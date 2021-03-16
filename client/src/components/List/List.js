@@ -6,10 +6,12 @@ import {
   DeleteButton,
 } from "../../components/FontAwesome/FontAwesome";
 
+//Parent list element
 export function List({ children }) {
   return <ul style={{ listStyle: "none" }}>{children}</ul>;
 }
 
+//Child list elements
 export function ListItem({
   name,
   value,

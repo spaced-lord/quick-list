@@ -5,6 +5,7 @@ import { faStar as borderStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faTrashAlt as deleteButton } from "@fortawesome/free-solid-svg-icons";
 
+//Font awesome star
 export const BorderStar = ({ onClick, value }) => {
   return (
     <span onClick={onClick} value={value}>
@@ -17,6 +18,7 @@ export const BorderStar = ({ onClick, value }) => {
   );
 };
 
+//Font awesome star
 export const SolidStar = ({ onClick, value }) => {
   return (
     <span onClick={onClick} value={value}>
@@ -29,6 +31,7 @@ export const SolidStar = ({ onClick, value }) => {
   );
 };
 
+//Font awesome trash can
 export const DeleteButton = ({ onClick, value }) => {
   return (
     <span onClick={onClick} value={value}>

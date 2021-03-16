@@ -1,5 +1,6 @@
 const db = require("../models");
 
+//Methods for database calls
 module.exports = {
   getAll: function (req, res) {
     db.Recipe.find(req.query)
