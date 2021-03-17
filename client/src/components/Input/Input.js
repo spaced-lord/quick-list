@@ -1,5 +1,6 @@
 import React from "react";
 
+//Input bar component
 const InputBar = ({ name, onChange }) => {
   return (
     <input

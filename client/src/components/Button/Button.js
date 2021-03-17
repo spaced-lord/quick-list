@@ -1,5 +1,6 @@
 import React from "react";
 
+///Button component
 const Button = ({ name, onClick, text, disabled }) => {
   return (
     <div className="container my-5">

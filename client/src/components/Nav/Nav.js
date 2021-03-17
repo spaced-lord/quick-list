@@ -14,7 +14,9 @@ function NavTabs({ login, logout }) {
 
   return (
     <div className="navBar container py-5 max-w-full border-b-2 border-green-500 border-opacity-50 rounded-xl">
-      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 animate-pulse sm:text-md">
+
+      <span className="bg-transparent hover:bg-green-300 rounded font-bold text-xl mx-3 px-3 py-2 navLinks animate-pulse">
+
         <Link
           to="/"
           className={location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -56,7 +58,7 @@ function NavTabs({ login, logout }) {
           Grocery List
         </Link>
       </span>
-      <h1 className="title text-green-500 md:text-6xl font-bold">QuickList</h1>
+      <h1 className="title text-green-500 sm:text-6xl font-bold">QuickList</h1>
       <div className="flex justify-end -my-14 mx-5">
         {id ? (
           <span className="LogInOUT">
