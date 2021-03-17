@@ -25,6 +25,36 @@
 .navLinks {
   margin-left: -20px;
 }
-/* .navBar:hover {
-  font-size: 30px;
-} */
+@media only screen and (max-width: 1200px) {
+  .title {
+    margin-top: 5%;
+    font-size: 52px;
+  }
+  .m-40 {
+    margin: 5%;
+    margin-top: 20%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .title {
+    margin-top: 5%;
+    font-size: 36px;
+    float: left;
+    clear: both;
+  }
+  .LogInOUT {
+    margin-top: 35%;
+  }
+  .m-40 {
+    margin: 5%;
+    margin-top: 20%;
+  }
+  .navBar {
+    text-align: center;
+    height: unset;
+  }
+  .navLinks {
+    display: block;
+    margin: 3%;
+  }
+}
