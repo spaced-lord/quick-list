@@ -9,37 +9,47 @@ import {
 } from "react-notifications";
 
 const SavedRecipe = () => {
+  //Pulls id from context and creates states
   const { id } = useContext(LoginContext);
   const [recipeList, setRecipeList] = useState([]);
   const [favRecipeList, setFavRecipeList] = useState([]);
 
+  //Initial function for api call
   useEffect(() => {
     getRecipes();
   }, []);
 
+  //Function to get all user recipes based on id
   const getRecipes = () => {
     API.recipeList({ user: id })
       .then((res) => {
+        //Returns based on if recipe is favorit or not
         const favoritesList = res.data.filter((recipe) => {
           if (recipe.favorite) {
             return recipe;
           }
         });
-
+        //Sets two lists
         setFavRecipeList(favoritesList);
         setRecipeList(res.data);
       })
       .catch((err) => console.log(err));
   };
 
+  //Function to handle click on recipes
   const handleRecipeClick = (event) => {
+    //Success notification to notify operator recipe was added
     createNotification("success");
+    //Stores clicked on ID
     const recipeID = event.target.getAttribute("value");
+    //Call to database to get ingredient with recipe ID value
     API.getRecipe(recipeID)
       .then((res) => {
+        //Sets up data to be stored in grocery list collection
         const groceryArray = res.data.ingredients.map((item) => {
           return { name: item, user: id };
         });
+        //Stores to grocery list collection
         API.addToGroceryList(groceryArray)
           .then((data) => {})
           .catch((err) => console.log(err));
@@ -47,7 +57,9 @@ const SavedRecipe = () => {
       .catch((err) => console.log(err));
   };
 
+  //Function to update favorites list
   const favFunction = (event) => {
+    //Call to update database
     API.updateFav(event.target.getAttribute("value"))
       .then((res) => {
         getRecipes();
@@ -57,7 +69,9 @@ const SavedRecipe = () => {
       });
   };
 
+  //Function to delete a recipe
   const deleteFunction = (event) => {
+    //Call to delete recipe with selected ID
     API.deleteRecipe(event.target.getAttribute("value"))
       .then((res) => {
         getRecipes();
@@ -65,6 +79,7 @@ const SavedRecipe = () => {
       .catch((err) => console.log(err));
   };
 
+  //Function to return notification
   const createNotification = (type) => {
     switch (type) {
       case "success":
@@ -72,6 +87,7 @@ const SavedRecipe = () => {
     }
   };
 
+  //Return for page
   return (
     <div className="py-8 px-8 m-40 bg-green-300 font-bold text-center rounded-xl">
       {id ? (

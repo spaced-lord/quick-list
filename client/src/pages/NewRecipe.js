@@ -1,4 +1,4 @@
-//Import React, useState, and necessary components.
+//Dependencies and components
 import React, { useState, useReducer, useContext } from "react";
 import { Dropdown, DropdownOptions } from "../components/Dropdown/Dropdown";
 import IngredientList from "../components/IngredientList/IngredientList";
@@ -40,12 +40,17 @@ const NewRecipe = () => {
 
   //State for second dropdown array
   const [ingredSelectArray, dispatch] = useReducer((state, action) => {
+    //Sets first dropdown value and resets second to default
     setDropdownState({ ...dropdownState, second: "default" });
+    //Temporary variable for state
     state = [];
+    //Pushes items that match ingredient type to temp array
     action[0].ingredientMatch.map((item) => {
       return state.push(item.name);
     });
+    //Adds "Create New" to beginning of array
     state.unshift("Create New");
+    //Sets array
     return state;
   }, []);
 
@@ -71,8 +76,9 @@ const NewRecipe = () => {
         setDropdownState({ first: "default", second: "default" });
         break;
       case "addNewRecipe":
+        //Sends notification to user
         createNotification("success");
-        ////To slow to work(Ask question)
+        //Sets ingredient array
         setIngredientsArray((previousState) => [
           ...previousState,
           ingredient.ingredientName,
@@ -98,23 +104,26 @@ const NewRecipe = () => {
       case "recipeName":
         //Sets the recipe name with the state changed by the input
         setRecipeState({ name: pageState.recipeName });
+        //Pulls ingredient types from database
         API.ingredientTypeList()
           .then((res) => {
+            //Sets type array for dropdown
             const tempSelectArray = res.data.map((type) => type.type);
             setTypeSelectArray(tempSelectArray);
           })
           .catch((err) => console.log(err));
         break;
       case "completeToGroceryList":
-        ////To slow to work(Ask question)
+        //Adds ingredient to array
         setIngredientsArray((previousState) => [
           ...previousState,
           ingredient.ingredientName,
         ]);
+        //Converts ingredient array to array of objects for database
         const groceryArray = ingredientsArray.map((item) => {
           return { name: item, user: id };
         });
-
+        //Post to grocery list
         API.addToGroceryList(groceryArray)
           .then((res) => {})
           .catch((err) => console.log(err));
@@ -149,19 +158,26 @@ const NewRecipe = () => {
     //Switch case for dropdown
     switch (name) {
       case "type":
+        //Adds to ingredient state for ternary operators in return
         setIngredient({ [name]: value });
+        //Sets up first dropdown value
         setDropdownState({ ...dropdownState, first: value });
+        //Api call to find matching ingredients based on type
         API.ingredientMatchList({ [name]: value }).then((res) => {
           const selectIngredientArray = res.data.filter(
             (item) => item.type === value
           );
+          //Sets second dropdown selections
           dispatch(selectIngredientArray);
         });
         break;
       case "ingredientName":
+        //Checks for new ingredient
         if (value === "Create New") {
+          //Sets page state for ternary operators in return
           setPageState({ ...pageState, [name]: "Placeholder" });
         } else {
+          //Sets values needed for second dropdown and database storage
           setPageState({ ...pageState, [name]: "" });
           setIngredient({ ...ingredient, [name]: value });
           setDropdownState({ ...dropdownState, second: value });
@@ -184,6 +200,7 @@ const NewRecipe = () => {
         setPageState({ recipeName: value });
         break;
       case "ingredientName":
+        //Sets ingredient if typed into input
         setIngredient({ ...ingredient, [name]: value, new: true });
         break;
       default:
@@ -191,12 +208,16 @@ const NewRecipe = () => {
     }
   };
 
+  //Function to remove select ingredient from new recipe
   const deleteItem = (event) => {
+    //Remove item from array
     ingredientsArray.splice(
       event.target.parentElement.getAttribute("value"),
       1
     );
+    //Store in new array for storage
     const newIngredientsArray = ingredientsArray;
+    //Sets ingredient array to be rerendered
     setIngredientsArray((previousState) =>
       newIngredientsArray.map((item) => {
         return item;
@@ -204,6 +225,7 @@ const NewRecipe = () => {
     );
   };
 
+  //Function to create success message to user
   const createNotification = (type) => {
     switch (type) {
       case "success":
